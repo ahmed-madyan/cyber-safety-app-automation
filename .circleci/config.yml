@@ -8,6 +8,6 @@ orbs:
 workflows:
   maven_test:
     jobs:
-      - maven/clean/test:
+      - maven/test:
           command: 'clean test'
           executor: java17
