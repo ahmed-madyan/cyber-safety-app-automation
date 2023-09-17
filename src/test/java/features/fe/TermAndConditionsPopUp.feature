@@ -1,5 +1,5 @@
 @Regression @Regression_FE @TermsAndConditions
-Feature: terms and conditions - pop up
+Feature: Terms and Conditions - Pop Up
 
   Background: Skip to cosmos screen
     Given User navigates to on boarding screen
