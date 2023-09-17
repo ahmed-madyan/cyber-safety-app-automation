@@ -191,7 +191,7 @@ public class Assert {
 
     public Assert elementAttributeToBe(@NotNull final By elementLocated, @NotNull final String attribute, @NotNull final String value) {
         try {
-            new Assertion().assertEquals(Elements.elementActions().getAttribute(elementLocated, attribute), value);
+            new Assertion().assertEquals(Elements.elementActions().getAttribute(elementLocated, attribute).trim(), value.trim());
             System.out.println("Attribute {" + attribute + "} is equals to the expected {" + value + "}");
         } catch (Exception e) {
            Exceptions.handle(e);
