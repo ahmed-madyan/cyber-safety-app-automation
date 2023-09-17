@@ -6,6 +6,7 @@ import io.appium.java_client.AppiumBy;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import readers.json_reader.JSONDataManager;
+import waits.Waits;
 
 public class TermAndConditionsPopUp {
     private static final By POP_UP_HEADER = AppiumBy.accessibilityId("Before_Start_Title_component");
@@ -18,6 +19,7 @@ public class TermAndConditionsPopUp {
     private static final JSONObject TEST_DATA = JSONDataManager.parseJSON(TEST_DATA_FILE_PATH);
 
     public static void validateUserRedirectedToTermsAndConditionsPopUp() {
+        Waits.explicitlyWait().visibilityOfElementLocated(POP_UP_HEADER);
         Assertions.hardAssert().elementDisplayed(POP_UP_HEADER);
         Assertions.hardAssert().elementDisplayed(POP_UP_CLOSE_BUTTON);
         Assertions.hardAssert().elementDisplayed(POP_UP_SKIP_BUTTON);
