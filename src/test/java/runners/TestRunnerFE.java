@@ -9,8 +9,9 @@ import io.cucumber.testng.CucumberOptions;
                 features = {"src/test/java/features"},
                 glue = {"steps"},
                 tags = ("@Regression_FE"),
-                plugin = {"pretty",
-                        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
+                plugin = {"pretty", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+        )
+
 
 public class TestRunnerFE extends DriverInitializer {
 }
