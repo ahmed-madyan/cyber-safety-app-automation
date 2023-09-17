@@ -6,7 +6,7 @@ executors:
 orbs:
   maven: circleci/maven@1.4.1
 workflows:
-  maven_clean_test:
+  maven_test:
     jobs:
       - maven/clean/test:
           command: 'clean test'
