@@ -18,7 +18,6 @@ import java.time.Duration;
 import java.util.Arrays;
 
 public class BrowserStackBuildIdentifier {
-
     @Setter
     @Getter
     public static int buildNumber;
@@ -35,7 +34,6 @@ public class BrowserStackBuildIdentifier {
     }
 
     public static void generateBuildNumber() {
-
         chromeOptions.addArguments("--headless=new");
         driver = new ChromeDriver(chromeOptions);
         driverWait = new FluentWait<>(driver)
