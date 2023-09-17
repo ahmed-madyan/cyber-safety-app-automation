@@ -1,7 +1,7 @@
 package waits;
 
 import driver.DriverManager;
-import exceptions.ExceptionHandling;
+import exceptions.Exceptions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +20,7 @@ public class FluentWaits {
         try {
             WAIT.until(ExpectedConditions.presenceOfElementLocated(elementLocated));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -29,7 +29,7 @@ public class FluentWaits {
             presenceOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.visibilityOfElementLocated(elementLocated));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -38,7 +38,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementToBeClickable(elementLocated));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -47,7 +47,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementToBeSelected(elementLocated));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -56,7 +56,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, false));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -65,7 +65,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, state));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -74,7 +74,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.textToBePresentInElementLocated(elementLocated, expectedText));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -83,7 +83,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.textToBe(elementLocated, expectedText));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -92,7 +92,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.attributeContains(elementLocated, attribute, value));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 
@@ -101,7 +101,7 @@ public class FluentWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.attributeToBe(elementLocated, attribute, value));
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
     }
 }

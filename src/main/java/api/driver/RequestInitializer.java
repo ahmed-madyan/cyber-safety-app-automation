@@ -1,6 +1,6 @@
 package api.driver;
 
-import exceptions.ExceptionHandling;
+import exceptions.Exceptions;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
@@ -165,7 +165,7 @@ public class RequestInitializer {
             System.out.println("=============================================================================================================================================");
             requestSpecBuilder.log(LogDetail.ALL);
         } catch (Exception exception) {
-            ExceptionHandling.handleException(exception);
+            Exceptions.handle(exception);
         }
         return requestSpecBuilder.build();
     }
@@ -210,7 +210,7 @@ public class RequestInitializer {
                 }
             }
         } catch (Exception e) {
-            ExceptionHandling.handleException(e);
+            Exceptions.handle(e);
         }
         System.out.println("=============================================================================================================================================");
         if (uri != null) {
