@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
                 publish = true,
                 features = {"src/test/java/features"},
                 glue = {"steps"},
-                tags = ("@TopicsScreen"),
+                tags = ("@Regression_FE"),
                 plugin = {"pretty",
                         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"})
 
