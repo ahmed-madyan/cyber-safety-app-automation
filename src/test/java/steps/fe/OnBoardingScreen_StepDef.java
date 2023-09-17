@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import pages.fe.OnBoardingScreen;
 
 public class OnBoardingScreen_StepDef {
+    
     @Given("User navigates to on boarding screen")
     public void userNavigatesToOnBoardingScreen() {
         OnBoardingScreen.assertThatUserNavigatedToOnBoardingScreen();
