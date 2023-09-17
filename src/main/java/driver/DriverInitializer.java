@@ -1,5 +1,6 @@
 package driver;
 
+import cli.CLI;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -49,6 +50,17 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
                 throw new RuntimeException();
             }
         }
+    }
+
+    @BeforeSuite
+    public void deleteOutDatedAllureReport() {
+//        CLI.executeCommandLine("cd allure-results");
+//        CLI.executeCommandLine("DEL /S /Q *.json");
+    }
+
+    @AfterSuite
+    public void generateAllureReport() {
+        CLI.executeCommandLine("allure serve allure-results");
     }
 
     protected static AppiumDriver getDriver() {
