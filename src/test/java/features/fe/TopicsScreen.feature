@@ -14,11 +14,11 @@ Feature: On Boarding - Topics
     When Swipe On Boarding Cards
     Then User should be redirected to the topics screen
     When User clicks skip on Topics Screen
-    Then User should be redirected to the Cosmos screen
+    Then User should be redirected to terms and conditions pop up
 
   @TopicsScreen_TC3   @TopicsScreen_Go_Button
   Scenario: Validate that Go button will redirect the user to the cosmos screen
     Given User navigates to on boarding screen
     When Swipe On Boarding Cards
     When User clicks Go on Topics Screen
-    Then User should be redirected to the Cosmos screen
+    Then User should be redirected to terms and conditions pop up
