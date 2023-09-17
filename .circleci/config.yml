@@ -11,8 +11,13 @@ workflows:
   #      - maven/clean:
   #          command: '- X clean'
   #          executor: java17
-  maven_test:
-      jobs:
-        - maven/test:
-            command: 'clean test'
-            executor: java17
+  maven_clean_test:
+    jobs:
+      - maven/clean:
+          command: 'clean'
+          executor: java17
+      - maven/test:
+          command: 'test'
+          executor: java17
+          requires:
+            - maven/clean
