@@ -6,18 +6,8 @@ executors:
 orbs:
   maven: circleci/maven@1.4.1
 workflows:
-  #  maven_clean:
-  #    jobs:
-  #      - maven/clean:
-  #          command: '- X clean'
-  #          executor: java17
   maven_clean_test:
     jobs:
-      - maven/clean:
-          command: 'clean'
+      - maven/clean/test:
+          command: 'clean test'
           executor: java17
-      - maven/test:
-          command: 'test'
-          executor: java17
-          requires:
-            - maven/clean
