@@ -6,41 +6,41 @@ import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
 
 public class NavigationBar {
-    private static final By cosmosTab_Button = AppiumBy.accessibilityId("Cosmos_Button");
-    private static final By mySpaceTab_Button = AppiumBy.accessibilityId("MySpace_Button");
-    private static final By burgerMenuTab_Button = AppiumBy.accessibilityId("Drawer_BurgerIcon");
-    private static final By searchTab_Button = AppiumBy.accessibilityId("Duplicated!!");
+    private static final By COSMOS_TAB_BUTTON = AppiumBy.accessibilityId("Cosmos_Button");
+    private static final By MY_SPACE_TAB_BUTTON = AppiumBy.accessibilityId("MySpace_Button");
+    private static final By BURGER_MENU_TAB_BUTTON = AppiumBy.accessibilityId("Drawer_BurgerIcon");
+    private static final By SEARCH_TAB_BUTTON = AppiumBy.accessibilityId("Drawer_BurgerIcon");
 
     public static void openCosmosTab() {
-        Elements.elementActions().click(cosmosTab_Button);
+        Elements.elementActions().click(COSMOS_TAB_BUTTON);
     }
 
     public static void openMySpaceTab() {
-        Elements.elementActions().click(mySpaceTab_Button);
+        Elements.elementActions().click(MY_SPACE_TAB_BUTTON);
     }
 
     public static void openBurgerMenuTab() {
-        Elements.elementActions().click(burgerMenuTab_Button);
+        Elements.elementActions().click(BURGER_MENU_TAB_BUTTON);
     }
 
     public static void openSearchTab() {
-        Elements.elementActions().click(searchTab_Button);
+        Elements.elementActions().click(SEARCH_TAB_BUTTON);
     }
 
     public static void assertCosmosButtonExists() {
-        Assertions.hardAssert().elementDisplayed(cosmosTab_Button);
+        Assertions.hardAssert().elementDisplayed(COSMOS_TAB_BUTTON);
     }
 
     public static void assertMySpaceButtonExists() {
-        Assertions.hardAssert().elementDisplayed(mySpaceTab_Button);
+        Assertions.hardAssert().elementDisplayed(MY_SPACE_TAB_BUTTON);
     }
 
     public static void assertBurgerMenuButtonExists() {
-        Assertions.hardAssert().elementDisplayed(burgerMenuTab_Button);
+        Assertions.hardAssert().elementDisplayed(BURGER_MENU_TAB_BUTTON);
     }
 
     public static void assertSearchButtonExists() {
-        Assertions.hardAssert().elementDisplayed(searchTab_Button);
+        Assertions.hardAssert().elementDisplayed(SEARCH_TAB_BUTTON);
     }
 
     public static void assertNavigationBarContent() {
@@ -51,6 +51,6 @@ public class NavigationBar {
     }
 
     public static void assertCosmosScreenSelected() {
-        Assertions.hardAssert().elementSelected(cosmosTab_Button);
+        Assertions.hardAssert().elementSelected(COSMOS_TAB_BUTTON);
     }
 }
