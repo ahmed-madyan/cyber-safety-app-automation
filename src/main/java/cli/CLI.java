@@ -1,5 +1,7 @@
 package cli;
 
+import exceptions.Exceptions;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -16,16 +18,15 @@ public class CLI {
             throw new RuntimeException(e);
         }
         BufferedReader r = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String line;
+        String line = null;
         while (true) {
             try {
                 if (!((line = r.readLine()) != null)) break;
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                Exceptions.handle(e);
             }
             System.out.println(line);
             break;
         }
     }
 }
-
