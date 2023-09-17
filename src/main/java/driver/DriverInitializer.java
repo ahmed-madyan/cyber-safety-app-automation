@@ -52,13 +52,13 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
         }
     }
 
-    @BeforeSuite
+//    @BeforeSuite
     public void deleteOutDatedAllureReport() {
-//        CLI.executeCommandLine("cd allure-results");
-//        CLI.executeCommandLine("DEL /S /Q *.json");
+        CLI.executeCommandLine("cd allure-results");
+        CLI.executeCommandLine("DEL /S /Q *.json");
     }
 
-    @AfterSuite
+//    @AfterSuite
     public void generateAllureReport() {
         CLI.executeCommandLine("allure serve allure-results");
     }
