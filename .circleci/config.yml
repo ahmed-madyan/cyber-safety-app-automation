@@ -14,5 +14,5 @@ workflows:
   maven_test:
       jobs:
         - maven/test:
-            command: 'mvn clean test'
+            command: 'clean test'
             executor: java17
