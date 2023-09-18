@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.testng.annotations.*;
 import readers.properties_reader.PropertiesConfigurations;
+import reports.AllureReport;
 import waits.Waits;
 
 public class DriverInitializer extends AbstractTestNGCucumberTests {
@@ -17,6 +18,11 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
     @BeforeSuite(alwaysRun = true)
     public void generateBuildIdentifier() {
         BrowserStackBuildIdentifier.generateBuildIdentifierDateTime();
+    }
+
+    @BeforeSuite(alwaysRun = true, dependsOnMethods = "generateBuildIdentifier")
+    public void deleteOutDatedAllureReport() {
+        AllureReport.deleteOutDatedAllureReport();
     }
 
     @BeforeMethod(alwaysRun = true)
@@ -50,6 +56,11 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
         }
     }
 
+    @AfterSuite(alwaysRun = true)
+    private static void generateAllureReport() {
+        AllureReport.installNPMAllureWrapper();
+        AllureReport.generateAllureReport();
+    }
     protected static AppiumDriver getDriver() {
         return BrowserStackInitializer.appiumDriver.get();
     }

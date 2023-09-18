@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class CLI {
-    public static void executeCommandLine(String command) throws IOException {
+    public static String executeCommandLine(String command) throws IOException {
         ProcessBuilder builder = new ProcessBuilder(
                 "cmd.exe", "/c", command);
         builder.redirectErrorStream(true);
@@ -16,6 +16,7 @@ public class CLI {
             System.out.println(line);
             break;
         }
+        return line;
     }
 }
 
