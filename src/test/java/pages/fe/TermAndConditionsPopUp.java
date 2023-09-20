@@ -47,6 +47,6 @@ public class TermAndConditionsPopUp {
     public static void validatePopUpDialoge() {
         Assertions.hardAssert().elementTextToBe(POP_UP_DIALOG_1, JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "popUp_Dialog_1", JSONDataManager.Types.STRING).toString());
         Assertions.hardAssert().elementTextToBe(POP_UP_DIALOG_TC, JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "popUp_Dialog_TC", JSONDataManager.Types.STRING).toString());
-//        Assertions.hardAssert().elementTextToBe(POP_UP_DIALOG_2, JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "popUp_Dialog_2", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().elementTextToBe(POP_UP_DIALOG_2, JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "popUp_Dialog_2", JSONDataManager.Types.STRING).toString());
     }
 }
