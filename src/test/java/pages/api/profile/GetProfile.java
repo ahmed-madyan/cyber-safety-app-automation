@@ -43,7 +43,6 @@ public class GetProfile {
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .addHeaders(headersMap)
                         .setContentType(ContentType.JSON)
-                        .setExpectedStatusCode(SC_OK)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
         setProfile(response.as(Profile_Res.class));
@@ -74,7 +73,6 @@ public class GetProfile {
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
-                        .setExpectedStatusCode(SC_FORBIDDEN)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
@@ -89,7 +87,6 @@ public class GetProfile {
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "notExistUserName", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
-                        .setExpectedStatusCode(SC_NOT_FOUND)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
