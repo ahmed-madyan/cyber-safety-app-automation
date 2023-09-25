@@ -5,6 +5,7 @@ import context.Context;
 import context.ScenarioContext;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
+import log4j_logger.Log4JLogger;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -14,9 +15,9 @@ import org.testng.annotations.Parameters;
                 publish = true,
                 features = {"src/test/java/features"},
                 glue = {"steps"},
-                tags = ("@Content_Valid_Request"),
+                tags = ("@Get_Profile"),
                 plugin = {"pretty",
-                        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+                        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
         )
 
 public class TestRunnerAPI extends AbstractTestNGCucumberTests {
@@ -32,7 +33,7 @@ public class TestRunnerAPI extends AbstractTestNGCucumberTests {
                 ScenarioContext.setContext(Context.TARGET_ENVIRONMENT, testEnvironment);
                 ScenarioContext.setContext(Context.TARGET_BASE_URI, BaseURI.SIT);
             }
-            default -> System.out.println("Kindly select valid test Environment [<!-- ST or SIT -->].");
+            default -> Log4JLogger.logWARN("Kindly select valid test Environment [<!-- ST or SIT -->].");
         }
     }
 }

@@ -1,12 +1,20 @@
 package unit_test;
 
+import log4j_logger.Log4JLogger;
+import readers.json_reader.JSONDataManager;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class UnitTest {
+    private static final String TEST_DATA_FILE_PATH = ("src/test/resources/test_data/fe/expected/OnBoardingScreens.json");
+
     public static void main(String[] args) {
-        String date = ("2022-09-09T00:00:00Z");
-        System.out.println("Year: " + extractYearFromISODate(date) + "\nMonth: " + extractMonthFromISODate(date));
+
+        String string = JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "onBoarding_Card_Title_4", JSONDataManager.Types.STRING).toString().trim();
+        Log4JLogger.logINFO(string);
+//        String date = ("2022-09-09T00:00:00Z");
+//        Log4JLogger.logINFO("Year: " + extractYearFromISODate(date) + "\nMonth: " + extractMonthFromISODate(date));
     }
 
     private static String extractYearFromISODate(String isoExtendedDate) {

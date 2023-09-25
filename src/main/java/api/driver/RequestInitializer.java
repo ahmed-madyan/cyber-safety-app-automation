@@ -8,6 +8,7 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import log4j_logger.Log4JLogger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -162,8 +163,8 @@ public class RequestInitializer {
             requestSpecBuilder.setRelaxedHTTPSValidation();
             requestSpecBuilder.setConfig(restAssuredConfig);
             requestSpecBuilder.setUrlEncodingEnabled(urlEncodingEnabled);
-            System.out.println("=============================================================================================================================================");
-            requestSpecBuilder.log(LogDetail.ALL);
+            Log4JLogger.logINFO("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            Log4JLogger.logINFO(requestSpecBuilder.log(LogDetail.ALL).toString());
         } catch (Exception exception) {
             Exceptions.handle(exception);
         }
@@ -177,11 +178,11 @@ public class RequestInitializer {
         Response response = null;
         try {
             given().relaxedHTTPSValidation();
-            System.out.println("=============================================================================================================================================");
+            Log4JLogger.logINFO("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
             if (uri != null) {
-                System.out.println("Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
+                Log4JLogger.logINFO("Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
             } else {
-                System.out.println("Printing out all request specification details log for {Service URL: " + url + basePath + "}");
+                Log4JLogger.logINFO("Printing out all request specification details log for {Service URL: " + url + basePath + "}");
             }
             if (httpStatusCode != null) {
                 switch (requestMethod) {
@@ -195,7 +196,7 @@ public class RequestInitializer {
                             response = given().spec(buildRequest()).delete().then().log().all().statusCode(httpStatusCode).extract().response();
                     case PATCH ->
                             response = given().spec(buildRequest()).patch().then().log().all().statusCode(httpStatusCode).extract().response();
-                    default -> System.out.println("Kindly select valid HTTP request method");
+                    default -> Log4JLogger.logINFO("Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
@@ -206,19 +207,19 @@ public class RequestInitializer {
                             response = given().spec(buildRequest()).delete().then().log().all().extract().response();
                     case PATCH ->
                             response = given().spec(buildRequest()).patch().then().log().all().extract().response();
-                    default -> System.out.println("Kindly select valid HTTP request method");
+                    default -> Log4JLogger.logINFO("Kindly select valid HTTP request method");
                 }
             }
         } catch (Exception e) {
             Exceptions.handle(e);
         }
-        System.out.println("=============================================================================================================================================");
+        Log4JLogger.logINFO("=============================================================================================================================================");
         if (uri != null) {
-            System.out.println("All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
+            Log4JLogger.logINFO("All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
         } else {
-            System.out.println("All request specification details log have been logged for {Service URL: " + url + basePath + "}");
+            Log4JLogger.logINFO("All request specification details log have been logged for {Service URL: " + url + basePath + "}");
         }
-        System.out.println("=============================================================================================================================================");
+        Log4JLogger.logINFO("=============================================================================================================================================");
         return response;
     }
 }

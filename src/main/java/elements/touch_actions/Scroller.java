@@ -8,6 +8,7 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import log4j_logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 
@@ -25,7 +26,7 @@ class Scroller {
                     isElementDisplayed = scrollDown(elementLocated);
                     if (!isElementDisplayed) {
                         isElementDisplayed = scrollUp(elementLocated);
-                        System.out.println("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
+                        Log4JLogger.logINFO("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
                     }
                 } catch (Exception e) {
                     Exceptions.handle(e);
@@ -36,7 +37,7 @@ class Scroller {
                     isElementDisplayed = scrollRight(elementLocated);
                     if (!isElementDisplayed) {
                         isElementDisplayed = scrollLeft(elementLocated);
-                        System.out.println("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
+                        Log4JLogger.logINFO("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
                     }
                 } catch (Exception e) {
                     Exceptions.handle(e);

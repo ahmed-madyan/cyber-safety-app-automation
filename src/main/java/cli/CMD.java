@@ -1,5 +1,7 @@
 package cli;
 
+import log4j_logger.Log4JLogger;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,7 +23,7 @@ public class CMD {
             if (line == null) {
                 break;
             }
-            System.out.println(line);
+            Log4JLogger.logINFO(line);
         }
         p.destroy();
     }

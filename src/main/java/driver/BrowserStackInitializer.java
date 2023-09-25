@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
+import log4j_logger.Log4JLogger;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import readers.properties_reader.PropertiesConfigurations;
@@ -28,12 +29,12 @@ public class BrowserStackInitializer {
 
     protected static AppiumDriver browserStackInitialization(String platformName) {
         BrowserStackInitializer.platformName = platformName;
-        System.out.println("Execution Address Configuration: " + PropertiesConfigurations.getExecutionAddressConfig());
+        Log4JLogger.logINFO("Execution Address Configuration: " + PropertiesConfigurations.getExecutionAddressConfig());
         switch (PropertiesConfigurations.getExecutionAddressConfig()) {
             case "manual" -> setupManually();
             case "yml" -> setupYML();
             default -> {
-                System.out.println("Kindly set the target remote execution option.");
+                Log4JLogger.logINFO("Kindly set the target remote execution option.");
                 throw new RuntimeException();
             }
         }
@@ -66,7 +67,7 @@ public class BrowserStackInitializer {
                 }
             }
             default -> {
-                System.out.println("Kindly set the target operating system option.");
+                Log4JLogger.logINFO("Kindly set the target operating system option.");
                 throw new RuntimeException();
             }
         }
@@ -100,7 +101,7 @@ public class BrowserStackInitializer {
         setCommonDesiredCapabilities();
         //Initialize the driver and launch the app
         try {
-            System.out.println("Android Desired Capabilities: " + desiredCapabilities);
+            Log4JLogger.logINFO("Android Desired Capabilities: " + desiredCapabilities);
             appiumDriver.set(new AndroidDriver(new URL(browserStack_ServerURL), desiredCapabilities));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
@@ -135,7 +136,7 @@ public class BrowserStackInitializer {
         setCommonDesiredCapabilities();
         //Initialize the driver and launch the app
         try {
-            System.out.println("iOS Desired Capabilities: " + desiredCapabilities);
+            Log4JLogger.logINFO("iOS Desired Capabilities: " + desiredCapabilities);
             appiumDriver.set(new IOSDriver(new URL(browserStack_ServerURL), desiredCapabilities));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);

@@ -6,6 +6,7 @@ import elements.Elements;
 import elements.element_actions.ElementActions;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import log4j_logger.Log4JLogger;
 import org.openqa.selenium.By;
 
 public class IOSActions {
@@ -29,7 +30,7 @@ public class IOSActions {
         Elements
                 .elementActions()
                 .sendKeys(elementLocated, value);
-        System.out.println("Picker value changed to be: " + Elements.elementActions().getText(elementLocated));
+        Log4JLogger.logINFO("Picker value changed to be: " + Elements.elementActions().getText(elementLocated));
         return this;
     }
 
@@ -37,7 +38,7 @@ public class IOSActions {
         Elements
                 .elementActions()
                 .sendKeys(elementLocated, value);
-        System.out.println("Slider value changed to be: " + Elements.elementActions().getAttribute(elementLocated, "value"));
+        Log4JLogger.logINFO("Slider value changed to be: " + Elements.elementActions().getAttribute(elementLocated, "value"));
         return this;
     }
 }

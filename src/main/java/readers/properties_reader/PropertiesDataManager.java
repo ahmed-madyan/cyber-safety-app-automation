@@ -1,6 +1,7 @@
 package readers.properties_reader;
 
 import exceptions.Exceptions;
+import log4j_logger.Log4JLogger;
 import org.apache.commons.configuration.PropertiesConfiguration;
 
 import java.io.FileInputStream;
@@ -13,24 +14,24 @@ import java.util.Properties;
 public class PropertiesDataManager {
     private static final String PROJECT_PATH = System.getProperty("user.dir");
     private static final Properties properties = new Properties();
-    private static final String BROWSERSTACK_CAPABILITIES_PATH = ("/src/main/resources/properties/BrowserStackCapabilities.properties");
-    private static final String EXECUTION_CAPABILITIES_PATH = ("/src/main/resources/properties/ExecutionPlatformCapabilities.properties");
-    private static final String MOBILE_CAPABILITIES_PATH = ("/src/main/resources/properties/MobileCapabilities.properties");
+    private static final String BROWSERSTACK_CAPABILITIES_PATH = ("/src/main/resources/BrowserStackCapabilities.properties");
+    private static final String EXECUTION_CAPABILITIES_PATH = ("/src/main/resources/ExecutionPlatformCapabilities.properties");
+    private static final String MOBILE_CAPABILITIES_PATH = ("/src/main/resources/MobileCapabilities.properties");
 
     private static Properties readProperty(String filePathContentRoot) {
         try {
             InputStream fileInputStream = new FileInputStream((PROJECT_PATH + filePathContentRoot));
             properties.load(fileInputStream);
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()) + "\n");
+            Log4JLogger.logINFO(e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()) + "\n");
             Exceptions.handle(e);
         }
         return properties;
     }
 
     public static String getProperty(String key, String filePathContentRoot) {
-        System.out.println("Test data file path: " + PROJECT_PATH + filePathContentRoot);
-        System.out.println("Desired key: " + key);
+        Log4JLogger.logINFO("Test data file path: " + PROJECT_PATH + filePathContentRoot);
+        Log4JLogger.logINFO("Desired key: " + key);
         return readProperty(filePathContentRoot).getProperty(key).trim();
     }
 
@@ -40,7 +41,7 @@ public class PropertiesDataManager {
             properties.put(key, value.trim());
             properties.store(fileOutputStream, null);
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "\n" + e.getMessage() + "\n");
+            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
             Exceptions.handle(e);
         }
     }
@@ -67,7 +68,7 @@ public class PropertiesDataManager {
             properties.put(key, value.trim());
             properties.store(fileOutputStream, null);
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "\n" + e.getMessage() + "\n");
+            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
             Exceptions.handle(e);
         }
     }
@@ -84,7 +85,7 @@ public class PropertiesDataManager {
             conf.setProperty(key, value);
             conf.save();
         } catch (Exception e) {
-            System.out.println(e.getMessage() + "\n" + e.getMessage() + "\n");
+            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
             Exceptions.handle(e);
         }
     }

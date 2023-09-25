@@ -10,6 +10,7 @@ import context.ScenarioContext;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import log4j_logger.Log4JLogger;
 import org.testng.Assert;
 import pages.api.firebase.PostAnonymousToken;
 import readers.json_reader.JSONDataManager;
@@ -26,7 +27,7 @@ public class GetFullContentList extends PostAnonymousToken {
 
     public static void invokeContentEndpointWithValidRequest() {
         headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
-        System.out.println(headersMap);
+        Log4JLogger.logINFO(headersMap.toString());
         response = APIActions
                 .setRequestSpecifications()
                 .setRequestMethod(RequestMethod.GET)

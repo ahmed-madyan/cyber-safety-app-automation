@@ -2,6 +2,7 @@ package readers.json_reader;
 
 import exceptions.Exceptions;
 import io.restassured.path.json.JsonPath;
+import log4j_logger.Log4JLogger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -27,7 +28,7 @@ public class JSONDataManager {
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
-        else System.out.println("Please send the JSON file path");
+        else Log4JLogger.logINFO("Please send the JSON file path");
         return reader;
     }
 
@@ -68,11 +69,11 @@ public class JSONDataManager {
      */
     public static Object getJSONData(String filePath, String keyPath, Types type) {
         Object keyValue;
-        System.out.println("Test data file path: " + filePath);
-        System.out.println("Key path: " + keyPath);
+        Log4JLogger.logINFO("Test data file path: " + filePath);
+        Log4JLogger.logINFO("Key path: " + keyPath);
         object = parseJSON(filePath);
         keyValue = getObject(keyPath, type, object);
-        System.out.println("Key value: " + keyValue);
+        Log4JLogger.logINFO("Key value: " + keyValue);
         return keyValue;
     }
 
@@ -131,7 +132,7 @@ public class JSONDataManager {
         if (data != null)
             return data;
         else {
-            System.out.println("No data found");
+            Log4JLogger.logINFO("No data found");
         }
         return null;
     }

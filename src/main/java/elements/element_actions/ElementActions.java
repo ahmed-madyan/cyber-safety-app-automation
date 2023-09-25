@@ -6,6 +6,7 @@ import elements.mobile_actions.MobileActions;
 import elements.touch_actions.TouchActions;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import log4j_logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -131,7 +132,7 @@ public class ElementActions {
         try {
             Waits.fluentlyWait().visibilityOfElementLocated(elementLocated);
             elementLocationX = findElement(elementLocated).getLocation().getX();
-            System.out.println("Element Location X: " + elementLocationX);
+            Log4JLogger.logINFO("Element Location X: " + elementLocationX);
         } catch (Exception e) {
             Exceptions.handle(e);
         }
@@ -142,7 +143,7 @@ public class ElementActions {
         int elementWidth = 0;
         try {
             elementWidth = findElement(elementLocated).getSize().getWidth();
-            System.out.println("Element width: " + elementWidth);
+            Log4JLogger.logINFO("Element width: " + elementWidth);
         } catch (Exception e) {
             Exceptions.handle(e);
         }
@@ -153,7 +154,7 @@ public class ElementActions {
         int elementLocationY = 0;
         try {
             elementLocationY = findElement(elementLocated).getLocation().getY();
-            System.out.println("Element Location Y: " + elementLocationY);
+            Log4JLogger.logINFO("Element Location Y: " + elementLocationY);
         } catch (Exception e) {
             Exceptions.handle(e);
         }
@@ -164,7 +165,7 @@ public class ElementActions {
         int elementHeight = 0;
         try {
             elementHeight = findElement(elementLocated).getSize().getHeight();
-            System.out.println("Element height: " + elementHeight);
+            Log4JLogger.logINFO("Element height: " + elementHeight);
         } catch (Exception e) {
             Exceptions.handle(e);
         }
