@@ -6,6 +6,7 @@ import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.Activity;
+import log4j_logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.DeviceRotation;
 import org.openqa.selenium.ScreenOrientation;
@@ -35,7 +36,7 @@ public class AndroidActions {
     public AndroidActions scrollIntoElementView(@NotNull final By elementLocated, @NotNull final String elementText) {
         try {
             Elements.elementActions().findElement(AppiumBy.ByAndroidUIAutomator.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + elementText + "\").instance(0))"));
-            System.out.println("Is element displayed: " + Elements.elementState().isDisplayed(elementLocated));
+            Log4JLogger.logINFO("Is element displayed: " + Elements.elementState().isDisplayed(elementLocated));
         } catch (Exception e) {
             Exceptions.handle(e);
         }

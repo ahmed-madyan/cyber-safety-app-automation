@@ -3,6 +3,7 @@ package driver;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
+import log4j_logger.Log4JLogger;
 import lombok.Getter;
 import lombok.Setter;
 import org.testng.annotations.*;
@@ -24,16 +25,16 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
     protected void initializeDriver(@Optional("Android") String platformName) {
         setPlatform(platformName);
         PropertiesConfigurations.setConfigProperties();
-        System.out.println("Execution Address: " + PropertiesConfigurations.getExecutionAddress());
+        Log4JLogger.logINFO("Execution Address: " + PropertiesConfigurations.getExecutionAddress());
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> setDriver(DriverLocalServiceInitializer.localServiceInitialization());
             case "remote" -> setDriver(BrowserStackInitializer.browserStackInitialization(platformName));
             default -> {
-                System.out.println("Kindly set the execution platform address.");
+                Log4JLogger.logWARN("Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
-        System.out.println("Session Id: " + getDriver().getSessionId());
+        Log4JLogger.logINFO("Session Id: " + getDriver().getSessionId());
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
 
@@ -44,7 +45,7 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             case "local" -> DriverLocalServiceInitializer.localServiceTermination();
             case "remote" -> BrowserStackInitializer.appiumDriver.get().quit();
             default -> {
-                System.out.println("Kindly set the execution platform address.");
+                Log4JLogger.logWARN("Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
