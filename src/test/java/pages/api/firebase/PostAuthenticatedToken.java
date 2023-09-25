@@ -44,7 +44,7 @@ public class PostAuthenticatedToken {
     public static void extractAuthenticatedJWTToken() {
         AuthenticatedToken_Res authenticatedTokenRes = response.as(AuthenticatedToken_Res.class);
         ScenarioContext.setContext(Context.AUTH_ACCESS_TOKEN, authenticatedTokenRes.getIdToken());
-        Log4JLogger.logINFO("AUTH_ACCESS_TOKEN:\n" + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
+        Log4JLogger.logINFO(PostAuthenticatedToken.class,"AUTH_ACCESS_TOKEN:\n" + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
         JSONDataManager.getJSONData("src/test/resources/test_data/api/request/profile/Profile.json", "username", JSONDataManager.Types.STRING);
     }
 }

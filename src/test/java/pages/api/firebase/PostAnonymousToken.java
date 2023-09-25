@@ -37,6 +37,6 @@ public class PostAnonymousToken {
     public static void extractAnonymousJWTToken() {
         AnonymousToken_Res fireBase = response.as(AnonymousToken_Res.class);
         ScenarioContext.setContext(Context.AUTH_ACCESS_TOKEN, fireBase.getIdToken());
-        Log4JLogger.logINFO("AUTH_ACCESS_TOKEN:\n" + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
+        Log4JLogger.logINFO(PostAnonymousToken.class,"AUTH_ACCESS_TOKEN:\n" + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
     }
 }

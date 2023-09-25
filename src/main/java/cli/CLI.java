@@ -24,9 +24,9 @@ public class CLI {
             try {
                 if (!((line = r.readLine()) != null)) break;
             } catch (IOException e) {
-                Exceptions.handle(e);
+                Exceptions.handle(CLI.class, e);
             }
-            Log4JLogger.logINFO(line);
+            Log4JLogger.logINFO(CLI.class,line);
             break;
         }
     }

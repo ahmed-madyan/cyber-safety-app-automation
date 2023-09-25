@@ -19,7 +19,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().startActivity(new Activity(appPackage.trim(), appActivity.trim()));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -28,7 +28,7 @@ public class AndroidActions {
         try {
             Elements.elementActions().findElement(AppiumBy.ByAndroidUIAutomator.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + elementText + "\").instance(0))"));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -36,9 +36,9 @@ public class AndroidActions {
     public AndroidActions scrollIntoElementView(@NotNull final By elementLocated, @NotNull final String elementText) {
         try {
             Elements.elementActions().findElement(AppiumBy.ByAndroidUIAutomator.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\"" + elementText + "\").instance(0))"));
-            Log4JLogger.logINFO("Is element displayed: " + Elements.elementState().isDisplayed(elementLocated));
+            Log4JLogger.logINFO(AndroidActions.class, "Is element displayed: " + Elements.elementState().isDisplayed(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -47,7 +47,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().setClipboardText(text);
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -57,7 +57,7 @@ public class AndroidActions {
         try {
             clipboardText = DriverManager.androidDriver().getDriverInstance().getClipboardText();
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return clipboardText;
     }
@@ -66,7 +66,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().rotate(new DeviceRotation(0, 0, 90));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -75,7 +75,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().rotate(new DeviceRotation(0, 0, 270));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -84,7 +84,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().rotate(new DeviceRotation(0, 0, angle));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -93,7 +93,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().rotate(ScreenOrientation.PORTRAIT);
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -102,7 +102,7 @@ public class AndroidActions {
         try {
             DriverManager.androidDriver().getDriverInstance().rotate(ScreenOrientation.LANDSCAPE);
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -112,7 +112,7 @@ public class AndroidActions {
         try {
             text = DriverManager.androidDriver().getDriverInstance().findElement(AppiumBy.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return text;
     }

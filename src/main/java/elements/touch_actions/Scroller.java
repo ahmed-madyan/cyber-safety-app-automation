@@ -26,10 +26,10 @@ class Scroller {
                     isElementDisplayed = scrollDown(elementLocated);
                     if (!isElementDisplayed) {
                         isElementDisplayed = scrollUp(elementLocated);
-                        Log4JLogger.logINFO("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
+                        Log4JLogger.logINFO(TouchActions.class, "Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
                     }
                 } catch (Exception e) {
-                    Exceptions.handle(e);
+                    Exceptions.handle(Scroller.class, e);
                 }
             }
             case HORIZONTAL -> {
@@ -37,10 +37,10 @@ class Scroller {
                     isElementDisplayed = scrollRight(elementLocated);
                     if (!isElementDisplayed) {
                         isElementDisplayed = scrollLeft(elementLocated);
-                        Log4JLogger.logINFO("Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
+                        Log4JLogger.logINFO(TouchActions.class, "Element located with [" + elementLocated + "] is displayed: " + isElementDisplayed);
                     }
                 } catch (Exception e) {
-                    Exceptions.handle(e);
+                    Exceptions.handle(Scroller.class, e);
                 }
             }
         }
@@ -64,7 +64,7 @@ class Scroller {
                 isElementDisplayed = Elements.elementState().isDisplayed(elementLocated);
             } while ((!Elements.elementState().isDisplayed(elementLocated)) && (!endPageSource.equals(startPageSource)));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(Scroller.class, e);
         }
         return isElementDisplayed;
     }
@@ -87,7 +87,7 @@ class Scroller {
                 isElementDisplayed = Elements.elementState().isDisplayed(elementLocated);
             } while ((!Elements.elementState().isDisplayed(elementLocated)) && (!endPageSource.equals(startPageSource)));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(Scroller.class, e);
         }
         return isElementDisplayed;
     }
@@ -110,7 +110,7 @@ class Scroller {
                 isElementDisplayed = Elements.elementState().isDisplayed(elementLocated);
             } while ((!Elements.elementState().isDisplayed(elementLocated)) && (!endPageSource.equals(startPageSource)));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(Scroller.class, e);
         }
         return isElementDisplayed;
     }
@@ -133,7 +133,7 @@ class Scroller {
                 isElementDisplayed = Elements.elementState().isDisplayed(elementLocated);
             } while ((!Elements.elementState().isDisplayed(elementLocated)) && (!endPageSource.equals(startPageSource)));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(Scroller.class, e);
         }
         return isElementDisplayed;
     }

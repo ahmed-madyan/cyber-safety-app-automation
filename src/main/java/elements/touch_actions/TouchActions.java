@@ -32,7 +32,7 @@ public class TouchActions {
         try {
             touchActions.tap(ElementOption.element(Elements.elementActions().findElement(elementLocated))).perform();
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -44,7 +44,7 @@ public class TouchActions {
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(durationOfSeconds)))
                     .perform();
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }

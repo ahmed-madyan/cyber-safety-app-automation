@@ -27,7 +27,7 @@ public class GetFullContentList extends PostAnonymousToken {
 
     public static void invokeContentEndpointWithValidRequest() {
         headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
-        Log4JLogger.logINFO(headersMap.toString());
+        Log4JLogger.logINFO(GetFullContentList.class,headersMap.toString());
         response = APIActions
                 .setRequestSpecifications()
                 .setRequestMethod(RequestMethod.GET)

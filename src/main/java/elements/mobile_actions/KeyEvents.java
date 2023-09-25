@@ -10,7 +10,7 @@ public class KeyEvents {
         try {
             DriverManager.androidDriver().getDriverInstance().pressKey(new KeyEvent(AndroidKey.ENTER));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(KeyEvents.class, e);
         }
     }
 
@@ -18,7 +18,7 @@ public class KeyEvents {
         try {
             DriverManager.androidDriver().getDriverInstance().pressKey(new KeyEvent(AndroidKey.HOME));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(KeyEvents.class, e);
         }
     }
 
@@ -26,7 +26,7 @@ public class KeyEvents {
         try {
             DriverManager.androidDriver().getDriverInstance().pressKey(new KeyEvent(AndroidKey.BACK));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(KeyEvents.class, e);
         }
     }
 }

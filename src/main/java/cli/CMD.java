@@ -23,7 +23,7 @@ public class CMD {
             if (line == null) {
                 break;
             }
-            Log4JLogger.logINFO(line);
+            Log4JLogger.logINFO(CMD.class,line);
         }
         p.destroy();
     }

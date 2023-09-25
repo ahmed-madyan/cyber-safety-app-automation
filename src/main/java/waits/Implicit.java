@@ -14,7 +14,7 @@ public class Implicit {
         try {
             DriverManager.getDriverInstance().manage().timeouts().implicitlyWait(duration);
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
