@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
                 publish = true,
                 features = {"src/test/java/features"},
                 glue = {"steps"},
-                tags = ("@Regression_API"),
+                tags = ("@Get_Profile"),
                 plugin = {"pretty",
                         "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
         )
