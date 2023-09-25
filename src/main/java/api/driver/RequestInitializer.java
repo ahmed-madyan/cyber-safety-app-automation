@@ -1,5 +1,6 @@
 package api.driver;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.Exceptions;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
@@ -95,7 +96,6 @@ public class RequestInitializer {
         this.requestBody = requestBody;
         return this;
     }
-
     public RequestInitializer setExpectedStatusCode(@Nullable final Integer httpStatusCode) {
         this.httpStatusCode = httpStatusCode;
         return this;
@@ -172,7 +172,8 @@ public class RequestInitializer {
             }
             if (requestBody != null) {
                 requestSpecBuilder.setBody(requestBody);
-                Log4JLogger.logINFO(getClass(), "Body: " + requestBody);
+                ObjectMapper objectMapper = new ObjectMapper();
+                Log4JLogger.logINFO(getClass(), "Body JSON Object: {} " + objectMapper.writeValueAsString(requestBody));
             }
             if (httpStatusCode != null) {
                 Log4JLogger.logINFO(getClass(), "ExpectedStatusCode: " + httpStatusCode);
