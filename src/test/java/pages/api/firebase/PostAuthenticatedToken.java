@@ -25,8 +25,8 @@ public class PostAuthenticatedToken {
         AuthenticatedToken_Req authenticatedTokenReq = new AuthenticatedToken_Req();
 //        authenticatedTokenReq.setEmail("tester55@toziapp.com");
 //        authenticatedTokenReq.setPassword("111111");
-        authenticatedTokenReq.setEmail(JSONDataManager.getJSONData("src/test/resources/test_data/api/request/profile/Profile.json", "username", JSONDataManager.Types.STRING).toString());
-        authenticatedTokenReq.setPassword(JSONDataManager.getJSONData("src/test/resources/test_data/api/request/profile/Profile.json", "pinCode", JSONDataManager.Types.STRING).toString());
+        authenticatedTokenReq.setEmail(JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
+        authenticatedTokenReq.setPassword(JSONDataManager.getJSONData(jsonFilePath, "pinCode", JSONDataManager.Types.STRING).toString());
         authenticatedTokenReq.setReturnSecureToken(true);
 
         queryParametersMap.put("key", FireBaseAPIKey.KEY.getFireBaseAPIKey());
@@ -44,7 +44,7 @@ public class PostAuthenticatedToken {
     public static void extractAuthenticatedJWTToken() {
         AuthenticatedToken_Res authenticatedTokenRes = response.as(AuthenticatedToken_Res.class);
         ScenarioContext.setContext(Context.AUTH_ACCESS_TOKEN, authenticatedTokenRes.getIdToken());
-        Log4JLogger.logINFO(PostAuthenticatedToken.class,"AUTH_ACCESS_TOKEN:\n" + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
+        Log4JLogger.logINFO(PostAuthenticatedToken.class,"AUTH_ACCESS_TOKEN: " + ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN));
         JSONDataManager.getJSONData("src/test/resources/test_data/api/request/profile/Profile.json", "username", JSONDataManager.Types.STRING);
     }
 }
