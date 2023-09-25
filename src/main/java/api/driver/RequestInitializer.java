@@ -173,7 +173,7 @@ public class RequestInitializer {
             if (requestBody != null) {
                 requestSpecBuilder.setBody(requestBody);
                 ObjectMapper objectMapper = new ObjectMapper();
-                Log4JLogger.logINFO(getClass(), "Body JSON Object: {} " + objectMapper.writeValueAsString(requestBody));
+                Log4JLogger.logINFO(getClass(), "Body JSON Object: {} " + new ObjectMapper().writeValueAsString(requestBody));
             }
             if (httpStatusCode != null) {
                 Log4JLogger.logINFO(getClass(), "ExpectedStatusCode: " + httpStatusCode);
@@ -195,7 +195,7 @@ public class RequestInitializer {
                 Log4JLogger.logINFO(getClass(), "Authentication Scheme: " + authenticationScheme);
             }
             requestSpecBuilder.setRelaxedHTTPSValidation();
-            requestSpecBuilder.log(LogDetail.ALL);
+//            requestSpecBuilder.log(LogDetail.ALL);
         } catch (Exception exception) {
             Exceptions.handle(getClass(), exception);
         }
@@ -218,32 +218,33 @@ public class RequestInitializer {
             if (httpStatusCode != null) {
                 switch (requestMethod) {
                     case GET ->
-                            response = given().spec(buildRequest()).get().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).get().then().statusCode(httpStatusCode).extract().response();
                     case POST ->
-                            response = given().spec(buildRequest()).post().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).post().then().statusCode(httpStatusCode).extract().response();
                     case PUT ->
-                            response = given().spec(buildRequest()).put().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).put().then().statusCode(httpStatusCode).extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).delete().then().statusCode(httpStatusCode).extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
                     default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
-                    case GET -> response = given().spec(buildRequest()).get().then().log().all().extract().response();
-                    case POST -> response = given().spec(buildRequest()).post().then().log().all().extract().response();
-                    case PUT -> response = given().spec(buildRequest()).put().then().log().all().extract().response();
+                    case GET -> response = given().spec(buildRequest()).get().then().extract().response();
+                    case POST -> response = given().spec(buildRequest()).post().then().extract().response();
+                    case PUT -> response = given().spec(buildRequest()).put().then().extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().log().all().extract().response();
+                            response = given().spec(buildRequest()).delete().then().extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().log().all().extract().response();
+                            response = given().spec(buildRequest()).patch().then().extract().response();
                     default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             }
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
+        Log4JLogger.logINFO(getClass(), "Response payload: " + Objects.requireNonNull(response).getBody().prettyPrint());
         return response;
     }
 }
