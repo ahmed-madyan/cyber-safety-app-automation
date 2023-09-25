@@ -1,6 +1,6 @@
 package context;
 
-import context.Context;
+import log4j_logger.Log4JLogger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +10,13 @@ public class ScenarioContext {
 
     public static void setContext(Context key, Object value) {
         scenarioContext.put(key.toString(), value);
+        Log4JLogger.logINFO(ScenarioContext.class, "Context" + key + " :" + value);
     }
 
     public static Object getContext(Context key) {
-        return scenarioContext.get(key.toString());
+        Object value = scenarioContext.get(key.toString());
+        Log4JLogger.logINFO(ScenarioContext.class, "Context" + key + " :" + value);
+        return value;
     }
 
     public Boolean isContains(Context key) {
