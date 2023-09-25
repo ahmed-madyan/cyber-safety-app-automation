@@ -36,7 +36,7 @@ public class AndroidGestures {
                     "duration", (durationOfSeconds * 1000)
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -48,7 +48,7 @@ public class AndroidGestures {
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -60,7 +60,7 @@ public class AndroidGestures {
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -71,7 +71,7 @@ public class AndroidGestures {
                     "elementId", ((RemoteWebElement) element).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -88,7 +88,7 @@ public class AndroidGestures {
                         ));
             } while (Elements.elementState().isDisplayed(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -104,7 +104,7 @@ public class AndroidGestures {
                     "percent", 1.0
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -118,7 +118,7 @@ public class AndroidGestures {
                     "percent", 3.0
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -132,7 +132,7 @@ public class AndroidGestures {
             ));
         } catch (
                 Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -146,7 +146,7 @@ public class AndroidGestures {
                     "endY", yEndCoordinate
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }

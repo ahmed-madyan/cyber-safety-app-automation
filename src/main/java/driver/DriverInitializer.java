@@ -25,16 +25,16 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
     protected void initializeDriver(@Optional("Android") String platformName) {
         setPlatform(platformName);
         PropertiesConfigurations.setConfigProperties();
-        Log4JLogger.logINFO("Execution Address: " + PropertiesConfigurations.getExecutionAddress());
+        Log4JLogger.logINFO(DriverInitializer.class, "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> setDriver(DriverLocalServiceInitializer.localServiceInitialization());
             case "remote" -> setDriver(BrowserStackInitializer.browserStackInitialization(platformName));
             default -> {
-                Log4JLogger.logWARN("Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
-        Log4JLogger.logINFO("Session Id: " + getDriver().getSessionId());
+        Log4JLogger.logINFO(DriverInitializer.class, "Session Id: " + getDriver().getSessionId());
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
 
@@ -45,7 +45,7 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             case "local" -> DriverLocalServiceInitializer.localServiceTermination();
             case "remote" -> BrowserStackInitializer.appiumDriver.get().quit();
             default -> {
-                Log4JLogger.logWARN("Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }

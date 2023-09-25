@@ -21,7 +21,7 @@ public class IOSActions {
         try {
             DriverManager.executeScript("mobile:launchApp", ImmutableMap.of("bundleId", bundleId));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -30,7 +30,7 @@ public class IOSActions {
         Elements
                 .elementActions()
                 .sendKeys(elementLocated, value);
-        Log4JLogger.logINFO("Picker value changed to be: " + Elements.elementActions().getText(elementLocated));
+        Log4JLogger.logINFO(IOSActions.class,"Picker value changed to be: " + Elements.elementActions().getText(elementLocated));
         return this;
     }
 
@@ -38,7 +38,7 @@ public class IOSActions {
         Elements
                 .elementActions()
                 .sendKeys(elementLocated, value);
-        Log4JLogger.logINFO("Slider value changed to be: " + Elements.elementActions().getAttribute(elementLocated, "value"));
+        Log4JLogger.logINFO(IOSActions.class,"Slider value changed to be: " + Elements.elementActions().getAttribute(elementLocated, "value"));
         return this;
     }
 }

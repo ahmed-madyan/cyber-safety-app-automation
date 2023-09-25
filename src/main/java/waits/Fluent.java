@@ -25,7 +25,7 @@ public class Fluent {
         try {
             driverWait.until(ExpectedConditions.visibilityOfElementLocated(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -35,7 +35,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.elementToBeClickable(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -45,7 +45,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.elementToBeSelected(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -55,7 +55,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, false));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -65,7 +65,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, state));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -75,7 +75,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.textToBePresentInElementLocated(elementLocated, expectedText));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -85,7 +85,7 @@ public class Fluent {
             visibilityOfElementLocated(elementLocated);
             driverWait.until(ExpectedConditions.textToBe(elementLocated, expectedText));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -97,7 +97,7 @@ public class Fluent {
                 currentContext = ((AndroidDriver) DriverManager.getDriverInstance()).getContext();
             } while (!currentContext.equalsIgnoreCase(context));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -106,7 +106,7 @@ public class Fluent {
         try {
             driverWait.until(ExpectedConditions.urlContains(expectedURL));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -115,7 +115,7 @@ public class Fluent {
         try {
             driverWait.until(ExpectedConditions.urlToBe(expectedURL));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }

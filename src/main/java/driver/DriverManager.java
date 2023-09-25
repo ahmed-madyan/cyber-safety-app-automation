@@ -42,7 +42,7 @@ public class DriverManager {
         try {
             DriverInitializer.getDriver().executeScript(script, immutableMap);
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(DriverManager.class, e);
         }
     }
 }

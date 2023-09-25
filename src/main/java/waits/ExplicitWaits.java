@@ -15,7 +15,7 @@ public class ExplicitWaits {
         try {
             WAIT.until(ExpectedConditions.presenceOfElementLocated(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -23,7 +23,7 @@ public class ExplicitWaits {
         try {
             WAIT.until(ExpectedConditions.visibilityOfElementLocated(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -32,7 +32,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementToBeClickable(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -41,7 +41,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementToBeSelected(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -50,7 +50,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, false));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -59,7 +59,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.elementSelectionStateToBe(elementLocated, state));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -68,7 +68,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.textToBePresentInElementLocated(elementLocated, expectedText));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -77,7 +77,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.textToBe(elementLocated, expectedText));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -87,7 +87,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.attributeContains(elementLocated, attribute, value));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 
@@ -97,7 +97,7 @@ public class ExplicitWaits {
             visibilityOfElementLocated(elementLocated);
             WAIT.until(ExpectedConditions.attributeToBe(elementLocated, attribute, value));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(ExplicitWaits.class, e);
         }
     }
 }

@@ -32,7 +32,7 @@ public class IOSGestures {
                     "duration", (durationOfSeconds * 1000)
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -44,7 +44,7 @@ public class IOSGestures {
                     "element", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -56,7 +56,7 @@ public class IOSGestures {
                     "element", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
 
@@ -68,7 +68,7 @@ public class IOSGestures {
                     "element", ((RemoteWebElement) element).getId()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
 
@@ -84,7 +84,7 @@ public class IOSGestures {
             ));
             } while (Elements.elementState().isDisplayed(elementLocated));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -97,7 +97,7 @@ public class IOSGestures {
                     "percent", 1.0
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -106,7 +106,7 @@ public class IOSGestures {
         try {
             DriverManager.executeScript("mobile: swipe", ImmutableMap.of("direction", gestureDirection.toString().toLowerCase()));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -119,7 +119,7 @@ public class IOSGestures {
                     "direction", gestureDirection.toString().toLowerCase()
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
 
@@ -133,7 +133,7 @@ public class IOSGestures {
                     "percent", 1.0
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
     }
@@ -147,7 +147,7 @@ public class IOSGestures {
                     "endY", yEndCoordinate
             ));
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
         return this;
 

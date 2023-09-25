@@ -8,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Arrays;
 import java.util.Properties;
 
 public class PropertiesDataManager {
@@ -23,15 +22,14 @@ public class PropertiesDataManager {
             InputStream fileInputStream = new FileInputStream((PROJECT_PATH + filePathContentRoot));
             properties.load(fileInputStream);
         } catch (Exception e) {
-            Log4JLogger.logINFO(e.getMessage() + "\n" + Arrays.toString(e.getStackTrace()) + "\n");
-            Exceptions.handle(e);
+            Exceptions.handle(PropertiesDataManager.class, e);
         }
         return properties;
     }
 
     public static String getProperty(String key, String filePathContentRoot) {
-        Log4JLogger.logINFO("Test data file path: " + PROJECT_PATH + filePathContentRoot);
-        Log4JLogger.logINFO("Desired key: " + key);
+        Log4JLogger.logINFO(PropertiesDataManager.class, "Test data file path: " + PROJECT_PATH + filePathContentRoot);
+        Log4JLogger.logINFO(PropertiesDataManager.class, "Desired key: " + key);
         return readProperty(filePathContentRoot).getProperty(key).trim();
     }
 
@@ -41,8 +39,7 @@ public class PropertiesDataManager {
             properties.put(key, value.trim());
             properties.store(fileOutputStream, null);
         } catch (Exception e) {
-            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
-            Exceptions.handle(e);
+            Exceptions.handle(PropertiesDataManager.class, e);
         }
     }
 
@@ -68,8 +65,7 @@ public class PropertiesDataManager {
             properties.put(key, value.trim());
             properties.store(fileOutputStream, null);
         } catch (Exception e) {
-            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
-            Exceptions.handle(e);
+            Exceptions.handle(PropertiesDataManager.class, e);
         }
     }
 
@@ -85,8 +81,7 @@ public class PropertiesDataManager {
             conf.setProperty(key, value);
             conf.save();
         } catch (Exception e) {
-            Log4JLogger.logINFO(e.getMessage() + "\n" + e.getMessage() + "\n");
-            Exceptions.handle(e);
+            Exceptions.handle(PropertiesDataManager.class, e);
         }
     }
 

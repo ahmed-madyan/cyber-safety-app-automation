@@ -1,5 +1,6 @@
 package api.driver;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.Exceptions;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
@@ -62,6 +63,7 @@ public class RequestInitializer {
 
     public RequestInitializer setPort(@Nullable final Integer port) {
         this.port = port;
+        Log4JLogger.logINFO(getClass(), "Port: " + port);
         return this;
     }
 
@@ -94,7 +96,6 @@ public class RequestInitializer {
         this.requestBody = requestBody;
         return this;
     }
-
     public RequestInitializer setExpectedStatusCode(@Nullable final Integer httpStatusCode) {
         this.httpStatusCode = httpStatusCode;
         return this;
@@ -128,46 +129,83 @@ public class RequestInitializer {
      * Build API Request Specification
      */
     private RequestSpecification buildRequest() {
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        if (uri != null) {
+            Log4JLogger.logINFO(getClass(), "Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
+        } else {
+            Log4JLogger.logINFO(getClass(), "Printing out all request specification details log for {Service URL: " + url + basePath + "}");
+        }
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Log4JLogger.logINFO(getClass(), "RequestMethod: " + requestMethod);
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         try {
             if (uri != null) {
                 requestSpecBuilder.setBaseUri(uri);
+                Log4JLogger.logINFO(getClass(), "BaseUri: " + uri);
             } else {
                 requestSpecBuilder.setBaseUri(url.toURI());
+                Log4JLogger.logINFO(getClass(), "BaseUri: " + url);
             }
-            requestSpecBuilder.setBasePath(basePath);
+            if (basePath != null) {
+                requestSpecBuilder.setBasePath(basePath);
+                Log4JLogger.logINFO(getClass(), "BasePath: " + basePath);
+            }
             if (port != null) {
                 requestSpecBuilder.setPort(port);
-            }
-            if (contentType != null) {
-                requestSpecBuilder.setContentType(contentType);
+                Log4JLogger.logINFO(getClass(), "Port: " + port);
             }
             if (headers != null && !headers.isEmpty()) {
                 requestSpecBuilder.addHeaders(headers);
+                Log4JLogger.logINFO(getClass(), "Headers: " + headers);
             }
             if (pathParams != null && !pathParams.isEmpty()) {
                 requestSpecBuilder.addPathParams(pathParams);
+                Log4JLogger.logINFO(getClass(), "Path Params: " + pathParams);
             }
             if (queryParams != null && !queryParams.isEmpty()) {
                 requestSpecBuilder.addQueryParams(queryParams);
+                Log4JLogger.logINFO(getClass(), "Query Params: " + queryParams);
             }
             if (formParams != null && !formParams.isEmpty()) {
                 requestSpecBuilder.addFormParams(formParams);
+                Log4JLogger.logINFO(getClass(), "Form Params: " + formParams);
             }
             if (requestBody != null) {
                 requestSpecBuilder.setBody(requestBody);
+                ObjectMapper objectMapper = new ObjectMapper();
+                Log4JLogger.logINFO(getClass(), "Body JSON Object: {} " + new ObjectMapper().writeValueAsString(requestBody));
+            }
+            if (httpStatusCode != null) {
+                Log4JLogger.logINFO(getClass(), "ExpectedStatusCode: " + httpStatusCode);
+            }
+            if (restAssuredConfig != null) {
+                requestSpecBuilder.setConfig(restAssuredConfig);
+                Log4JLogger.logINFO(getClass(), "Rest-assured Config: " + restAssuredConfig);
+            }
+            if (contentType != null) {
+                requestSpecBuilder.setContentType(contentType);
+                Log4JLogger.logINFO(getClass(), "Content Type: " + contentType);
+            }
+            if (urlEncodingEnabled != null) {
+                requestSpecBuilder.setUrlEncodingEnabled(urlEncodingEnabled);
+                Log4JLogger.logINFO(getClass(), "URL Encoding Enabled: " + urlEncodingEnabled);
             }
             if (authenticationScheme != null) {
                 requestSpecBuilder.setAuth(authenticationScheme);
+                Log4JLogger.logINFO(getClass(), "Authentication Scheme: " + authenticationScheme);
             }
             requestSpecBuilder.setRelaxedHTTPSValidation();
-            requestSpecBuilder.setConfig(restAssuredConfig);
-            requestSpecBuilder.setUrlEncodingEnabled(urlEncodingEnabled);
-            Log4JLogger.logINFO("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-            Log4JLogger.logINFO(requestSpecBuilder.log(LogDetail.ALL).toString());
+//            requestSpecBuilder.log(LogDetail.ALL);
         } catch (Exception exception) {
-            Exceptions.handle(exception);
+            Exceptions.handle(getClass(), exception);
         }
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        if (uri != null) {
+            Log4JLogger.logINFO(getClass(), "All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
+        } else {
+            Log4JLogger.logINFO(getClass(), "All request specification details log have been logged for {Service URL: " + url + basePath + "}");
+        }
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         return requestSpecBuilder.build();
     }
 
@@ -177,49 +215,36 @@ public class RequestInitializer {
     private Response send() {
         Response response = null;
         try {
-            given().relaxedHTTPSValidation();
-            Log4JLogger.logINFO("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-            if (uri != null) {
-                Log4JLogger.logINFO("Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
-            } else {
-                Log4JLogger.logINFO("Printing out all request specification details log for {Service URL: " + url + basePath + "}");
-            }
             if (httpStatusCode != null) {
                 switch (requestMethod) {
                     case GET ->
-                            response = given().spec(buildRequest()).get().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).get().then().statusCode(httpStatusCode).extract().response();
                     case POST ->
-                            response = given().spec(buildRequest()).post().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).post().then().statusCode(httpStatusCode).extract().response();
                     case PUT ->
-                            response = given().spec(buildRequest()).put().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).put().then().statusCode(httpStatusCode).extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().log().all().statusCode(httpStatusCode).extract().response();
+                            response = given().spec(buildRequest()).delete().then().statusCode(httpStatusCode).extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().log().all().statusCode(httpStatusCode).extract().response();
-                    default -> Log4JLogger.logINFO("Kindly select valid HTTP request method");
+                            response = given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
+                    default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
-                    case GET -> response = given().spec(buildRequest()).get().then().log().all().extract().response();
-                    case POST -> response = given().spec(buildRequest()).post().then().log().all().extract().response();
-                    case PUT -> response = given().spec(buildRequest()).put().then().log().all().extract().response();
+                    case GET -> response = given().spec(buildRequest()).get().then().extract().response();
+                    case POST -> response = given().spec(buildRequest()).post().then().extract().response();
+                    case PUT -> response = given().spec(buildRequest()).put().then().extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().log().all().extract().response();
+                            response = given().spec(buildRequest()).delete().then().extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().log().all().extract().response();
-                    default -> Log4JLogger.logINFO("Kindly select valid HTTP request method");
+                            response = given().spec(buildRequest()).patch().then().extract().response();
+                    default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             }
         } catch (Exception e) {
-            Exceptions.handle(e);
+            Exceptions.handle(getClass(), e);
         }
-        Log4JLogger.logINFO("=============================================================================================================================================");
-        if (uri != null) {
-            Log4JLogger.logINFO("All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
-        } else {
-            Log4JLogger.logINFO("All request specification details log have been logged for {Service URL: " + url + basePath + "}");
-        }
-        Log4JLogger.logINFO("=============================================================================================================================================");
+        Log4JLogger.logINFO(getClass(), "Response payload: " + Objects.requireNonNull(response).getBody().prettyPrint());
         return response;
     }
 }
