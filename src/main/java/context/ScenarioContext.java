@@ -10,12 +10,12 @@ public class ScenarioContext {
 
     public static void setContext(Context key, Object value) {
         scenarioContext.put(key.toString(), value);
-        Log4JLogger.logINFO(ScenarioContext.class, "Context" + key + " :" + value);
+        Log4JLogger.logINFO(ScenarioContext.class, "Context " + key + " :" + value);
     }
 
     public static Object getContext(Context key) {
         Object value = scenarioContext.get(key.toString());
-        Log4JLogger.logINFO(ScenarioContext.class, "Context" + key + " :" + value);
+        Log4JLogger.logINFO(ScenarioContext.class, "Context " + key + " :" + value);
         return value;
     }
 
