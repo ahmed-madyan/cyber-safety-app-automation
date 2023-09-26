@@ -171,7 +171,6 @@ public class RequestInitializer {
             }
             if (requestBody != null) {
                 requestSpecBuilder.setBody(requestBody);
-                ObjectMapper objectMapper = new ObjectMapper();
                 Log4JLogger.logINFO(getClass(), "Body JSON Object: {} " + new ObjectMapper().writeValueAsString(requestBody));
             }
             if (httpStatusCode != null) {
@@ -194,9 +193,8 @@ public class RequestInitializer {
                 Log4JLogger.logINFO(getClass(), "Authentication Scheme: " + authenticationScheme);
             }
             requestSpecBuilder.setRelaxedHTTPSValidation();
-//            requestSpecBuilder.log(LogDetail.ALL);
-        } catch (Exception exception) {
-            Exceptions.handle(getClass(), exception);
+        } catch (Exception e) {
+            Exceptions.handle(getClass(), e);
         }
         Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         if (uri != null) {
