@@ -17,14 +17,14 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
 
     @BeforeSuite(alwaysRun = true)
     public void generateBuildIdentifier() {
-        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(getClass(), Thread.currentThread().getName());
         BrowserStackBuildIdentifier.generateBuildIdentifierDateTime();
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("PlatformName")
     protected void initializeDriver(@Optional("Android") String platformName) {
-        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName(), "platformName: " + platformName);
+        Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "platformName: " + platformName);
         setPlatform(platformName);
         PropertiesConfigurations.setConfigProperties();
         Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName(), "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
@@ -32,11 +32,11 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             case "local" -> setDriver(DriverLocalServiceInitializer.localServiceInitialization());
             case "remote" -> setDriver(BrowserStackInitializer.browserStackInitialization(platformName));
             default -> {
-                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), Thread.currentThread().getName(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
-        Log4JLogger.logINFO(DriverInitializer.class, "Session Id: " + getDriver().getSessionId());
+        Log4JLogger.logINFO(getClass(), "Session Id: " + getDriver().getSessionId());
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
 
@@ -48,7 +48,7 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             case "local" -> DriverLocalServiceInitializer.localServiceTermination();
             case "remote" -> BrowserStackInitializer.appiumDriver.get().quit();
             default -> {
-                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), Thread.currentThread().getName(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
