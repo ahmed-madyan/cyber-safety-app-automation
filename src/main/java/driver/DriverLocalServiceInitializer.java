@@ -4,6 +4,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
+import logger.Log4JLogger;
 import readers.properties_reader.PropertiesDataManager;
 
 import java.io.File;
@@ -14,6 +15,7 @@ public class DriverLocalServiceInitializer {
     private static AppiumDriverLocalService appiumService;
 
     protected static AndroidDriver localServiceInitialization() {
+        Log4JLogger.logINFO(AppiumDriverLocalService.class, Thread.currentThread().getName());
         //Build the Appium service
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder()
                 .withAppiumJS(new File("C:\\Users\\_VOIS\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))
