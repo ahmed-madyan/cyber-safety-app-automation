@@ -21,6 +21,11 @@ public class Log4JLogger {
         logger.get().log(Level.WARN, s);
     }
 
+    public static void logWARN(Class<?> c, String s, Object object) {
+        logger.set(LogManager.getLogger(c));
+        logger.get().log(Level.WARN, "Method: " + s, object);
+    }
+
     public static void logINFO(Class<?> c, String s) {
         logger.set(LogManager.getLogger(c));
         logger.get().log(Level.INFO, s);
@@ -28,9 +33,18 @@ public class Log4JLogger {
 
     public static void logINFO(Class<?> c, String s, Object object) {
         logger.set(LogManager.getLogger(c));
-        logger.get().log(Level.INFO, s, object);
+        logger.get().log(Level.INFO, "Method: " + s + " - " + object);
     }
 
+    public static void logINFO(Class<?> c, String method, Object o1, Object o2) {
+        logger.set(LogManager.getLogger(c));
+        logger.get().log(Level.INFO, "Method: " + method + " - " + o1 + " - " + o2);
+    }
+
+    public static void logINFO(Class<?> c, String method, Object o1, Object o2, Object o3) {
+        logger.set(LogManager.getLogger(c));
+        logger.get().log(Level.INFO, "Method: " + method + " - " + o1 + " - " + o2 + " - " + o3);
+    }
     public static void logDEBUG(Class<?> c, String s) {
         logger.set(LogManager.getLogger(c));
         logger.get().log(Level.DEBUG, s);

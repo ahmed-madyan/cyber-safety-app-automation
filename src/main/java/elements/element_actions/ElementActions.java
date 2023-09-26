@@ -132,7 +132,7 @@ public class ElementActions {
         try {
             Waits.fluentlyWait().visibilityOfElementLocated(elementLocated);
             elementLocationX = findElement(elementLocated).getLocation().getX();
-            Log4JLogger.logINFO(ElementActions.class,"Element Location X: " + elementLocationX);
+            Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Element Location X: " + elementLocationX);
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
@@ -143,7 +143,7 @@ public class ElementActions {
         int elementWidth = 0;
         try {
             elementWidth = findElement(elementLocated).getSize().getWidth();
-            Log4JLogger.logINFO(ElementActions.class,"Element width: " + elementWidth);
+            Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Element width: " + elementWidth);
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
@@ -154,7 +154,7 @@ public class ElementActions {
         int elementLocationY = 0;
         try {
             elementLocationY = findElement(elementLocated).getLocation().getY();
-            Log4JLogger.logINFO(ElementActions.class,"Element Location Y: " + elementLocationY);
+            Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Element Location Y: " + elementLocationY);
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
@@ -165,7 +165,7 @@ public class ElementActions {
         int elementHeight = 0;
         try {
             elementHeight = findElement(elementLocated).getSize().getHeight();
-            Log4JLogger.logINFO(ElementActions.class,"Element height: " + elementHeight);
+            Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Element height: " + elementHeight);
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }

@@ -17,35 +17,38 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
 
     @BeforeSuite(alwaysRun = true)
     public void generateBuildIdentifier() {
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName());
         BrowserStackBuildIdentifier.generateBuildIdentifierDateTime();
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("PlatformName")
     protected void initializeDriver(@Optional("Android") String platformName) {
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "platformName: " + platformName);
         setPlatform(platformName);
         PropertiesConfigurations.setConfigProperties();
-        Log4JLogger.logINFO(DriverInitializer.class, "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
+        Log4JLogger.logINFO(DriverInitializer.class, new Object() {}.getClass().getEnclosingMethod().getName(), "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> setDriver(DriverLocalServiceInitializer.localServiceInitialization());
             case "remote" -> setDriver(BrowserStackInitializer.browserStackInitialization(platformName));
             default -> {
-                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
-        Log4JLogger.logINFO(DriverInitializer.class, "Session Id: " + getDriver().getSessionId());
+        Log4JLogger.logINFO(getClass(), "Session Id: " + getDriver().getSessionId());
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
 
     @AfterMethod(alwaysRun = true)
     protected void tearDownDriver() {
+        Log4JLogger.logINFO(DriverInitializer.class, new Object() {}.getClass().getEnclosingMethod().getName());
         //Tear the driver instance down
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> DriverLocalServiceInitializer.localServiceTermination();
             case "remote" -> BrowserStackInitializer.appiumDriver.get().quit();
             default -> {
-                Log4JLogger.logWARN(getClass(), "Kindly set the execution platform address.");
+                Log4JLogger.logWARN(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Kindly set the execution platform address.");
                 throw new RuntimeException();
             }
         }
