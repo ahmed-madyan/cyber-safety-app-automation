@@ -26,7 +26,7 @@ public class CLI {
             } catch (IOException e) {
                 Exceptions.handle(CLI.class, e);
             }
-            Log4JLogger.logINFO(CLI.class,line);
+            Log4JLogger.logINFO(CLI.class, Thread.currentThread().getName(), line);
             break;
         }
     }
