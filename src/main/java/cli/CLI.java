@@ -1,7 +1,7 @@
 package cli;
 
 import exceptions.Exceptions;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 
 import java.io.BufferedReader;
 import java.io.IOException;

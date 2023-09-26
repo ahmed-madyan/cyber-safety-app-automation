@@ -1,7 +1,7 @@
 package context;
 
 import io.restassured.response.Response;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 
 import java.util.HashMap;
 import java.util.Map;

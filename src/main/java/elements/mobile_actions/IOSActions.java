@@ -6,7 +6,7 @@ import elements.Elements;
 import elements.element_actions.ElementActions;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 
 public class IOSActions {

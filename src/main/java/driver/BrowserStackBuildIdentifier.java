@@ -1,6 +1,6 @@
 package driver;
 
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;

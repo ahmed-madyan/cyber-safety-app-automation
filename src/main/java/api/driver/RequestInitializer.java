@@ -5,11 +5,10 @@ import exceptions.Exceptions;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
-import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

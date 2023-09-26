@@ -1,6 +1,6 @@
 package unit_test;
 
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import readers.json_reader.JSONDataManager;
 
 import java.time.LocalDateTime;

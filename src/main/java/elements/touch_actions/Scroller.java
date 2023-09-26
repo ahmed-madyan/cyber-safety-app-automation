@@ -8,7 +8,7 @@ import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 

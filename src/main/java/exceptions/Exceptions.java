@@ -1,6 +1,6 @@
 package exceptions;
 
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 
 import java.util.Arrays;
 

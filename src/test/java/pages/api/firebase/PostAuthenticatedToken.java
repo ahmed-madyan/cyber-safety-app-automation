@@ -10,7 +10,7 @@ import api.pojo.responses.firebase.AuthenticatedToken_Res;
 import context.Context;
 import context.ScenarioContext;
 import io.restassured.response.Response;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import readers.json_reader.JSONDataManager;
 
 import java.util.HashMap;

@@ -3,7 +3,7 @@ package driver;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import lombok.Getter;
 import lombok.Setter;
 import org.testng.annotations.*;

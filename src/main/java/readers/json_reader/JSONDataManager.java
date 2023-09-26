@@ -2,7 +2,7 @@ package readers.json_reader;
 
 import exceptions.Exceptions;
 import io.restassured.path.json.JsonPath;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 

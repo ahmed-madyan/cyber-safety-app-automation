@@ -1,11 +1,11 @@
-package log4j_logger;
+package logger;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class Log4JLogger {
-    private static ThreadLocal<Logger> logger = new ThreadLocal<>();
+    private static final ThreadLocal<Logger> logger = new ThreadLocal<>();
 
     public static void logFATAL(Class<?> c, String s) {
         logger.get().log(Level.FATAL, s);

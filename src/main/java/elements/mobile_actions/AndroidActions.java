@@ -6,7 +6,7 @@ import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.Activity;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.DeviceRotation;
 import org.openqa.selenium.ScreenOrientation;

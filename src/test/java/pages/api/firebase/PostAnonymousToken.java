@@ -10,7 +10,7 @@ import context.ScenarioContext;
 import context.Context;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.apache.http.HttpStatus;
 
 import java.util.HashMap;

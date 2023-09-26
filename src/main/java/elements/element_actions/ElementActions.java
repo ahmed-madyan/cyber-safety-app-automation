@@ -6,7 +6,7 @@ import elements.mobile_actions.MobileActions;
 import elements.touch_actions.TouchActions;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

@@ -3,7 +3,7 @@ package assertions;
 import elements.Elements;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
-import log4j_logger.Log4JLogger;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.testng.asserts.Assertion;
 import org.testng.asserts.SoftAssert;
