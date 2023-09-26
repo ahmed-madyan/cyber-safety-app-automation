@@ -80,7 +80,6 @@ public class AndroidGestures {
 
     protected AndroidGestures swipe(@NotNull final By elementLocated, @NotNull final GestureDirection gestureDirection) {
         Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "GestureDirection: " + gestureDirection);
-        try {
             do {
                 ((JavascriptExecutor) Objects.requireNonNull(DriverManager.getDriverInstance())).
                         executeScript("mobile: swipeGesture", Map.of(
@@ -89,9 +88,6 @@ public class AndroidGestures {
                                 "percent", 1.0
                         ));
             } while (Elements.elementState().isDisplayed(elementLocated));
-        } catch (Exception e) {
-            Exceptions.handle(getClass(), e);
-        }
         return this;
     }
 
@@ -132,8 +128,7 @@ public class AndroidGestures {
                     "direction", gestureDirection.toString().toLowerCase(),
                     "percent", 3.0
             ));
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
         return this;
