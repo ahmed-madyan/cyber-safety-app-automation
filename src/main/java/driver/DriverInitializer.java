@@ -17,15 +17,17 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
 
     @BeforeSuite(alwaysRun = true)
     public void generateBuildIdentifier() {
+        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName());
         BrowserStackBuildIdentifier.generateBuildIdentifierDateTime();
     }
 
     @BeforeMethod(alwaysRun = true)
     @Parameters("PlatformName")
     protected void initializeDriver(@Optional("Android") String platformName) {
+        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName(), "platformName: " + platformName);
         setPlatform(platformName);
         PropertiesConfigurations.setConfigProperties();
-        Log4JLogger.logINFO(DriverInitializer.class, "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
+        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName(), "Execution Address: " + PropertiesConfigurations.getExecutionAddress());
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> setDriver(DriverLocalServiceInitializer.localServiceInitialization());
             case "remote" -> setDriver(BrowserStackInitializer.browserStackInitialization(platformName));
@@ -40,6 +42,7 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
 
     @AfterMethod(alwaysRun = true)
     protected void tearDownDriver() {
+        Log4JLogger.logINFO(DriverInitializer.class, Thread.currentThread().getName());
         //Tear the driver instance down
         switch (PropertiesConfigurations.getExecutionAddress()) {
             case "local" -> DriverLocalServiceInitializer.localServiceTermination();
