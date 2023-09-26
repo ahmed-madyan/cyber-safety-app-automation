@@ -19,7 +19,7 @@ class Scroller {
     private static final Dimension dimension = DriverManager.getWindowSize();
 
     protected static void scrollToElement(@NotNull final By elementLocated, @NotNull final TouchDirection direction) {
-        Log4JLogger.logINFO(Scroller.class, new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated, "TouchDirection: " + direction);
+        Log4JLogger.logINFO(Scroller.class, new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "TouchDirection: " + direction);
         boolean isElementDisplayed = false;
         switch (direction) {
             case VERTICAL -> {
@@ -48,7 +48,7 @@ class Scroller {
     }
 
     private static boolean scrollUp(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(Scroller.class, new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(Scroller.class, new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         boolean isElementDisplayed = false;
         String startPageSource;
         String endPageSource;
@@ -72,7 +72,7 @@ class Scroller {
     }
 
     private static boolean scrollDown(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(Scroller.class, new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(Scroller.class, new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         boolean isElementDisplayed = false;
         String startPageSource;
         String endPageSource;
@@ -96,10 +96,11 @@ class Scroller {
     }
 
     private static boolean scrollRight(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(Scroller.class, new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(Scroller.class, new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         boolean isElementDisplayed = false;
         String startPageSource;
         String endPageSource;
+        
         try {
             do {
                 startPageSource = DriverManager.getPageSource();
@@ -120,7 +121,7 @@ class Scroller {
     }
 
     private static boolean scrollLeft(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(Scroller.class, new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(Scroller.class, new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         boolean isElementDisplayed = false;
         String startPageSource;
         String endPageSource;

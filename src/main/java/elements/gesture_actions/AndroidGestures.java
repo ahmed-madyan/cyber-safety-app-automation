@@ -29,7 +29,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures longClick(@NotNull final By elementLocated, @NotNull final int durationOfSeconds) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated, "durationOfSeconds: " + durationOfSeconds);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "durationOfSeconds: " + durationOfSeconds);
         try {
             DriverManager.executeScript("mobile: longClickGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId(),
@@ -42,7 +42,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures doubleClick(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         try {
             DriverManager.executeScript("mobile: doubleClickGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
@@ -54,7 +54,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures click(@NotNull final By elementLocated) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated);
         try {
             DriverManager.executeScript("mobile: clickGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId()
@@ -66,7 +66,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures click(@NotNull final WebElement element) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "WebElement: " + element);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "WebElement: " + element);
         try {
             DriverManager.executeScript("mobile: clickGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) element).getId()
@@ -79,7 +79,7 @@ public class AndroidGestures {
 
 
     protected AndroidGestures swipe(@NotNull final By elementLocated, @NotNull final GestureDirection gestureDirection) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated, "GestureDirection: " + gestureDirection);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "GestureDirection: " + gestureDirection);
         try {
             do {
                 ((JavascriptExecutor) Objects.requireNonNull(DriverManager.getDriverInstance())).
@@ -96,7 +96,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures swipe(@NotNull final WebElement element, @NotNull final GestureDirection gestureDirection) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "WebElement: " + element, "GestureDirection: " + gestureDirection);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "WebElement: " + element, "GestureDirection: " + gestureDirection);
         try {
             DriverManager.executeScript("mobile: swipeGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) element).getId(),
@@ -110,7 +110,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures scrollToElement(@NotNull final By elementLocated, @NotNull final GestureDirection gestureDirection) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated, "GestureDirection: " + gestureDirection);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "GestureDirection: " + gestureDirection);
         boolean canScrollMore = false;
         try {
             DriverManager.executeScript("mobile: scrollGesture", ImmutableMap.of(
@@ -125,7 +125,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures scrollWithCoordinates(@NotNull final GestureDirection gestureDirection) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "GestureDirection: " + gestureDirection);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "GestureDirection: " + gestureDirection);
         try {
             DriverManager.executeScript("mobile: scrollGesture", ImmutableMap.of(
                     "left", 100, "top", 100, "width", 200, "height", 200,
@@ -140,7 +140,7 @@ public class AndroidGestures {
     }
 
     protected AndroidGestures drag(@NotNull final By elementLocated, @NotNull final int xEndCoordinate, @NotNull final int yEndCoordinate) {
-        Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "elementLocated: " + elementLocated, "xEndCoordinate: " + xEndCoordinate, "yEndCoordinate: " + yEndCoordinate);
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocated, "xEndCoordinate: " + xEndCoordinate, "yEndCoordinate: " + yEndCoordinate);
         try {
             DriverManager.executeScript("mobile: dragGesture", ImmutableMap.of(
                     "elementId", ((RemoteWebElement) Elements.elementActions().findElement(elementLocated)).getId(),

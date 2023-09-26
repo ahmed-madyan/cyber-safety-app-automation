@@ -30,7 +30,7 @@ public class BrowserStackBuildIdentifier {
     static FluentWait<WebDriver> driverWait;
     public static void generateBuildIdentifierDateTime() {
         setDateTime((new SimpleDateFormat("dd-MM-yyyy HH:mm").format(new Timestamp(System.currentTimeMillis()))));
-        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Exception().getStackTrace()[0].getMethodName(), "Date Time: " + getDateTime());
+        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Object() {}.getClass().getEnclosingMethod().getName(), "Date Time: " + getDateTime());
 
     }
 
@@ -74,7 +74,7 @@ public class BrowserStackBuildIdentifier {
         }
         String[] code = StringUtils.substringsBetween(firstBuild, "No.", "at");
         String previousBuildNumber = Arrays.toString(code).replaceAll("[\\[\\]]", "");
-        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Exception().getStackTrace()[0].getMethodName(), "previousBuildNumber" + previousBuildNumber);
+        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Object() {}.getClass().getEnclosingMethod().getName(), "previousBuildNumber" + previousBuildNumber);
         int buildInt = 0;
         if (previousBuildNumber.isBlank() || previousBuildNumber.isEmpty() || previousBuildNumber.contains("null")) {
             setBuildNumber(1);
@@ -83,6 +83,6 @@ public class BrowserStackBuildIdentifier {
             setBuildNumber(buildInt + 1);
         }
         driver.quit();
-        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Exception().getStackTrace()[0].getMethodName(), "Build Number: " + getBuildNumber());
+        Log4JLogger.logINFO(BrowserStackBuildIdentifier.class, new Object() {}.getClass().getEnclosingMethod().getName(), "Build Number: " + getBuildNumber());
     }
 }

@@ -23,7 +23,7 @@ public class CMD {
             if (line == null) {
                 break;
             }
-            Log4JLogger.logINFO(CMD.class, new Exception().getStackTrace()[0].getMethodName(), line);
+            Log4JLogger.logINFO(CMD.class, new Object() {}.getClass().getEnclosingMethod().getName(), line);
         }
         p.destroy();
     }

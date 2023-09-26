@@ -12,7 +12,7 @@ public class UnitTest {
     private static final String TEST_DATA_FILE_PATH = ("src/test/resources/test_data/fe/expected/OnBoardingScreens.json");
 
     public static void main(String[] args) {
-        System.out.println(new Exception().getStackTrace()[0].getMethodName());
+        System.out.println(new Object() {}.getClass().getEnclosingMethod().getName());
         String string = JSONDataManager.getJSONData(TEST_DATA_FILE_PATH, "onBoarding_Card_Title_4", JSONDataManager.Types.STRING).toString().trim();
         Log4JLogger.logINFO(UnitTest.class,string);
 //        String date = ("2022-09-09T00:00:00Z");
