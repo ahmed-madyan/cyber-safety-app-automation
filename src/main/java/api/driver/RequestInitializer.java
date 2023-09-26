@@ -130,9 +130,9 @@ public class RequestInitializer {
     private RequestSpecification buildRequest() {
         Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         if (uri != null) {
-            Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
+            Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
         } else {
-            Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Printing out all request specification details log for {Service URL: " + url + basePath + "}");
+            Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Printing out all request specification details log for {Service URL: " + url + basePath + "}");
         }
         Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         Log4JLogger.logINFO(getClass(), "RequestMethod: " + requestMethod);
@@ -140,57 +140,57 @@ public class RequestInitializer {
         try {
             if (uri != null) {
                 requestSpecBuilder.setBaseUri(uri);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "BaseUri: " + uri);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "BaseUri: " + uri);
             } else {
                 requestSpecBuilder.setBaseUri(url.toURI());
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "BaseUri: " + url);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "BaseUri: " + url);
             }
             if (basePath != null) {
                 requestSpecBuilder.setBasePath(basePath);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "BasePath: " + basePath);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "BasePath: " + basePath);
             }
             if (port != null) {
                 requestSpecBuilder.setPort(port);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Port: " + port);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Port: " + port);
             }
             if (headers != null && !headers.isEmpty()) {
                 requestSpecBuilder.addHeaders(headers);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Headers: " + headers);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Headers: " + headers);
             }
             if (pathParams != null && !pathParams.isEmpty()) {
                 requestSpecBuilder.addPathParams(pathParams);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Path Params: " + pathParams);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Path Params: " + pathParams);
             }
             if (queryParams != null && !queryParams.isEmpty()) {
                 requestSpecBuilder.addQueryParams(queryParams);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Query Params: " + queryParams);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Query Params: " + queryParams);
             }
             if (formParams != null && !formParams.isEmpty()) {
                 requestSpecBuilder.addFormParams(formParams);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Form Params: " + formParams);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Form Params: " + formParams);
             }
             if (requestBody != null) {
                 requestSpecBuilder.setBody(requestBody);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Body JSON Object: {} " + new ObjectMapper().writeValueAsString(requestBody));
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Body JSON Object: {} " + new ObjectMapper().writeValueAsString(requestBody));
             }
             if (httpStatusCode != null) {
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "ExpectedStatusCode: " + httpStatusCode);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "ExpectedStatusCode: " + httpStatusCode);
             }
             if (restAssuredConfig != null) {
                 requestSpecBuilder.setConfig(restAssuredConfig);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Rest-assured Config: " + restAssuredConfig);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Rest-assured Config: " + restAssuredConfig);
             }
             if (contentType != null) {
                 requestSpecBuilder.setContentType(contentType);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Content Type: " + contentType);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Content Type: " + contentType);
             }
             if (urlEncodingEnabled != null) {
                 requestSpecBuilder.setUrlEncodingEnabled(urlEncodingEnabled);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "URL Encoding Enabled: " + urlEncodingEnabled);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "URL Encoding Enabled: " + urlEncodingEnabled);
             }
             if (authenticationScheme != null) {
                 requestSpecBuilder.setAuth(authenticationScheme);
-                Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "Authentication Scheme: " + authenticationScheme);
+                Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Authentication Scheme: " + authenticationScheme);
             }
             requestSpecBuilder.setRelaxedHTTPSValidation();
         } catch (Exception e) {
@@ -198,9 +198,9 @@ public class RequestInitializer {
         }
         Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         if (uri != null) {
-            Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
+            Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
         } else {
-            Log4JLogger.logINFO(getClass(), Thread.currentThread().getName(), "All request specification details log have been logged for {Service URL: " + url + basePath + "}");
+            Log4JLogger.logINFO(getClass(), new Exception().getStackTrace()[0].getMethodName(), "All request specification details log have been logged for {Service URL: " + url + basePath + "}");
         }
         Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
         return requestSpecBuilder.build();
@@ -225,7 +225,7 @@ public class RequestInitializer {
                     case PATCH ->
                             response = given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
                     default ->
-                            Log4JLogger.logWARN(getClass(), Thread.currentThread().getName(), "Kindly select valid HTTP request method");
+                            Log4JLogger.logWARN(getClass(), new Exception().getStackTrace()[0].getMethodName(), "Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
@@ -242,7 +242,7 @@ public class RequestInitializer {
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
-        Log4JLogger.logINFO(getClass(), "Response payload: " + Thread.currentThread().getName(), Objects.requireNonNull(response).getBody().prettyPrint());
+        Log4JLogger.logINFO(getClass(), "Response payload: " + new Exception().getStackTrace()[0].getMethodName(), Objects.requireNonNull(response).getBody().prettyPrint());
         return response;
     }
 }

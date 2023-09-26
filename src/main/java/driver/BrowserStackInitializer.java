@@ -29,7 +29,7 @@ public class BrowserStackInitializer {
 
     protected static AppiumDriver browserStackInitialization(String platformName) {
         BrowserStackInitializer.platformName = platformName;
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName(), "platformName: " + platformName);
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName(), "platformName: " + platformName);
         switch (PropertiesConfigurations.getExecutionAddressConfig()) {
             case "manual" -> setupManually();
             case "yml" -> setupYML();
@@ -42,7 +42,7 @@ public class BrowserStackInitializer {
     }
 
     private static void setupManually() {
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName());
         switch (platformName) {
             case "Android" -> initAndroidDriver();
             case "iOS" -> initIOSDriver();
@@ -50,7 +50,7 @@ public class BrowserStackInitializer {
     }
 
     private static void setupYML() {
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName());
         switch (PropertiesConfigurations.getPlatformName()) {
             case "android" -> {
                 try {
@@ -76,7 +76,7 @@ public class BrowserStackInitializer {
     }
 
     private static void initAndroidDriver() {
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName());
         //Build the Browser Stack service
         /**********************************************************************************************************/
         /****************************************Specify the App***************************************************/
@@ -112,7 +112,7 @@ public class BrowserStackInitializer {
     }
 
     private static void initIOSDriver() {
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName());
         //Build the Browser Stack service
         /**********************************************************************************************************/
         /****************************************Specify the App***************************************************/
@@ -148,7 +148,7 @@ public class BrowserStackInitializer {
     }
 
     private static void setCommonDesiredCapabilities() {
-        Log4JLogger.logINFO(BrowserStackInitializer.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(BrowserStackInitializer.class, new Exception().getStackTrace()[0].getMethodName());
         /**********************************************************************************************************/
         /****************************************Set debugging options*********************************************/
         //Set debugging options

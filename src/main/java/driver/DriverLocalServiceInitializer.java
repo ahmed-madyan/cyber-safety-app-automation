@@ -15,7 +15,7 @@ public class DriverLocalServiceInitializer {
     private static AppiumDriverLocalService appiumService;
 
     protected static AndroidDriver localServiceInitialization() {
-        Log4JLogger.logINFO(AppiumDriverLocalService.class, Thread.currentThread().getName());
+        Log4JLogger.logINFO(AppiumDriverLocalService.class, new Exception().getStackTrace()[0].getMethodName());
         //Build the Appium service
         AppiumServiceBuilder serviceBuilder = new AppiumServiceBuilder()
                 .withAppiumJS(new File("C:\\Users\\_VOIS\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js"))

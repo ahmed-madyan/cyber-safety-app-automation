@@ -13,9 +13,9 @@ public class ScenarioContext {
         scenarioContext.put(key.toString(), value);
         if (key.equals(Context.RESPONSE_PAYLOAD)) {
             Response response = (Response) value;
-            Log4JLogger.logINFO(ScenarioContext.class, Thread.currentThread().getName(), " Set context key " + key + " with value: " + response.getBody().prettyPrint());
+            Log4JLogger.logINFO(ScenarioContext.class, new Exception().getStackTrace()[0].getMethodName(), " Set context key " + key + " with value: " + response.getBody().prettyPrint());
         } else {
-            Log4JLogger.logINFO(ScenarioContext.class, Thread.currentThread().getName(), " Set context key " + key + " with value: " + value.toString());
+            Log4JLogger.logINFO(ScenarioContext.class, new Exception().getStackTrace()[0].getMethodName(), " Set context key " + key + " with value: " + value.toString());
         }
     }
 
@@ -23,9 +23,9 @@ public class ScenarioContext {
         Object value = scenarioContext.get(key.toString());
         if (key.equals(Context.RESPONSE_PAYLOAD)) {
             Response response = (Response) value;
-            Log4JLogger.logINFO(ScenarioContext.class, Thread.currentThread().getName(), "Get context key " + key + " value: " + response.getBody().prettyPrint());
+            Log4JLogger.logINFO(ScenarioContext.class, new Exception().getStackTrace()[0].getMethodName(), "Get context key " + key + " value: " + response.getBody().prettyPrint());
         } else {
-            Log4JLogger.logINFO(ScenarioContext.class, Thread.currentThread().getName(), "Get context key " + key + " value: " + value.toString());
+            Log4JLogger.logINFO(ScenarioContext.class, new Exception().getStackTrace()[0].getMethodName(), "Get context key " + key + " value: " + value.toString());
         }
         return value;
     }
