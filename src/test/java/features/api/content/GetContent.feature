@@ -16,10 +16,10 @@ Feature:  Validate positive and negative scenarios for the Get Content endpoint.
   Scenario: Validate that Get /content response should be SC_UNAUTHORIZED when invoking API with an invalid request unauthorized.
     Given User invoke the content API with an invalid request unauthorized.
     Then API response status code should be SC_UNAUTHORIZED.
-    And API response payload should contain an invalid unauthorized error message.
+    And API response payload should contains an invalid unauthorized error message.
 
   @Content_InValid_Request_Forbidden
   Scenario: Validate that the Get /content response should be SC_FORBIDDEN when invoking API with an invalid request forbidden.
     Given User invoke the content API with an invalid request forbidden.
     Then API response status code should be SC_FORBIDDEN.
-    And API response payload should contain an invalid forbidden error message.
+    And API response payload should contains an invalid forbidden error message.

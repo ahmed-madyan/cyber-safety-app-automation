@@ -9,8 +9,12 @@ import io.cucumber.testng.CucumberOptions;
                 features = {"src/test/java/features"},
                 glue = {"steps"},
                 tags = ("@Regression_FE"),
-                plugin = {"pretty",
-                        "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm"}
+                plugin =
+                        {
+                                "pretty",
+                                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+                                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+                        }
         )
 
 
