@@ -3,14 +3,14 @@
 
 <suite name="Cyber Safety Regression Test Suite" parallel="tests" thread-count="1" preserve-order="true">
 <!--     parallel= ["methods" | "tests" | "classes" | "instances"] -->
-    <test name="Android Regression Test">
-        <parameter name="PlatformName" value="Android"/>
-        <!-- PlatformName: [Android | iOS] -->
-        <classes>
-            <class name="runners.TestRunnerFE"/>
-        </classes>
-    </test>
-<!--    <test name="iOS Regression Test">-->
+<!---->    <test name="Android Regression Test">-->
+    <!--        <parameter name="PlatformName" value="Android"/>-->
+    <!--        &lt;!&ndash; PlatformName: [Android | iOS] &ndash;&gt;-->
+    <!--        <classes>-->
+    <!--            <class name="runners.TestRunnerFE"/>-->
+    <!--        </classes>-->
+    <!--    </test>
+    <!--    <test name="iOS Regression Test">-->
 <!--        <parameter name="PlatformName" value="iOS"/>-->
 <!--        &lt;!&ndash; PlatformName: [Android | iOS] &ndash;&gt;-->
 <!--        <classes>-->

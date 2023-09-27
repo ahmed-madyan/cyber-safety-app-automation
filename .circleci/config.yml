@@ -11,3 +11,4 @@ workflows:
       - maven/test:
           command: 'clean test'
           executor: java17
+          test_results_path: /path/to/test/results
