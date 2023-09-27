@@ -127,7 +127,7 @@ public class RequestInitializer {
      * Build API Request Specification
      */
     private RequestSpecification buildRequest() {
-        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------");
         if (uri != null) {
             Log4JLogger.logINFO(getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName(), "Printing out all request specification details log for {Service URL: " + uri + basePath + "}");
@@ -135,7 +135,7 @@ public class RequestInitializer {
             Log4JLogger.logINFO(getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName(), "Printing out all request specification details log for {Service URL: " + url + basePath + "}");
         }
-        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------");
         Log4JLogger.logINFO(getClass(), "RequestMethod: " + requestMethod);
         RequestSpecBuilder requestSpecBuilder = new RequestSpecBuilder();
         try {
@@ -211,7 +211,7 @@ public class RequestInitializer {
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
-        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------");
         if (uri != null) {
             Log4JLogger.logINFO(getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName(), "All request specification details log have been logged for {Service URL: " + uri + basePath + "}");
@@ -219,7 +219,7 @@ public class RequestInitializer {
             Log4JLogger.logINFO(getClass(), new Object() {
             }.getClass().getEnclosingMethod().getName(), "All request specification details log have been logged for {Service URL: " + url + basePath + "}");
         }
-        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+        Log4JLogger.logINFO(getClass(), "------------------------------------------------------------------------------------------------------------------------------------");
         return requestSpecBuilder.build();
     }
 
