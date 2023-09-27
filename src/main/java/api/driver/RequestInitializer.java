@@ -2,6 +2,7 @@ package api.driver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.Exceptions;
+import io.restassured.RestAssured;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
@@ -16,8 +17,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.Objects;
-
-import static io.restassured.RestAssured.given;
 
 public class RequestInitializer {
     private String uri = null;
@@ -233,34 +232,34 @@ public class RequestInitializer {
             if (httpStatusCode != null) {
                 switch (requestMethod) {
                     case GET ->
-                            response = given().spec(buildRequest()).get().then().statusCode(httpStatusCode).extract().response();
+                            response = RestAssured.given().spec(buildRequest()).get().then().statusCode(httpStatusCode).extract().response();
                     case POST ->
-                            response = given().spec(buildRequest()).post().then().statusCode(httpStatusCode).extract().response();
+                            response = RestAssured.given().spec(buildRequest()).post().then().statusCode(httpStatusCode).extract().response();
                     case PUT ->
-                            response = given().spec(buildRequest()).put().then().statusCode(httpStatusCode).extract().response();
+                            response = RestAssured.given().spec(buildRequest()).put().then().statusCode(httpStatusCode).extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().statusCode(httpStatusCode).extract().response();
+                            response = RestAssured.given().spec(buildRequest()).delete().then().statusCode(httpStatusCode).extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
+                            response = RestAssured.given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
                     default -> Log4JLogger.logWARN(getClass(), new Object() {
                     }.getClass().getEnclosingMethod().getName(), "Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
-                    case GET -> response = given().spec(buildRequest()).get().then().extract().response();
-                    case POST -> response = given().spec(buildRequest()).post().then().extract().response();
-                    case PUT -> response = given().spec(buildRequest()).put().then().extract().response();
+                    case GET -> response = RestAssured.given().spec(buildRequest()).get().then().extract().response();
+                    case POST -> response = RestAssured.given().spec(buildRequest()).post().then().extract().response();
+                    case PUT -> response = RestAssured.given().spec(buildRequest()).put().then().extract().response();
                     case DELETE ->
-                            response = given().spec(buildRequest()).delete().then().extract().response();
+                            response = RestAssured.given().spec(buildRequest()).delete().then().extract().response();
                     case PATCH ->
-                            response = given().spec(buildRequest()).patch().then().extract().response();
+                            response = RestAssured.given().spec(buildRequest()).patch().then().extract().response();
                     default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             }
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
-        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Response payload: " + Objects.requireNonNull(response).getBody().prettyPrint());
+        Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "Response payload: " + Objects.requireNonNull(response).getBody().asPrettyString());
         return response;
     }
 }
