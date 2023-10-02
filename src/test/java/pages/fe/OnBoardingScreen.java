@@ -4,7 +4,6 @@ import assertions.Assertions;
 import elements.Elements;
 import elements.gesture_actions.GestureDirection;
 import io.appium.java_client.AppiumBy;
-import org.json.simple.JSONObject;
 import org.openqa.selenium.By;
 import readers.json_reader.JSONDataManager;
 
