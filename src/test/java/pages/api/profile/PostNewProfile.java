@@ -52,7 +52,7 @@ public class PostNewProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.POST)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.POST_PROFILE.getBasePath())
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -69,7 +69,7 @@ public class PostNewProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.POST)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.POST_PROFILE.getBasePath())
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -84,7 +84,7 @@ public class PostNewProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.POST)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.POST_PROFILE.getBasePath())
                         .setContentType(ContentType.JSON)
                         .setExpectedStatusCode(HttpStatus.SC_UNAUTHORIZED)
@@ -99,7 +99,7 @@ public class PostNewProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.POST)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.POST_PROFILE.getBasePath())
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)

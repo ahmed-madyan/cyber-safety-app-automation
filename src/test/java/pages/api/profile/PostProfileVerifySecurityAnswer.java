@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class PostProfileVerifySecurityAnswer {
     private static Response response = null;
     private static final String jsonFilePath = ("src/test/resources/test_data/" + ScenarioContext.getContext(Context.TARGET_ENVIRONMENT).toString() + "/api/profile/Profile.json");
-    private static final String endpoint = ("/profile-management-api/profile/{username}/verify-security-answer");
+    private static final String endpoint = ("PROD");
     private static final HashMap<String, String> headersMap = new HashMap<>();
     private static final JSONObject jsonObject = new JSONObject();
 
@@ -112,7 +112,7 @@ public class PostProfileVerifySecurityAnswer {
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("securityQuestion"), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("securityQuestion").toString(), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
         Assertions.hardAssert().objectEquals(response.jsonPath().get("success"), true);
     }
 }

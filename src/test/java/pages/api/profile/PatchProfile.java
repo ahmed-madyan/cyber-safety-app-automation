@@ -40,7 +40,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", username))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -58,7 +58,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -73,7 +73,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .setExpectedStatusCode(HttpStatus.SC_UNAUTHORIZED)
@@ -90,7 +90,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", username))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -106,7 +106,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "notExistUserName", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -130,7 +130,7 @@ public class PatchProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", new_Username))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -140,12 +140,12 @@ public class PatchProfile {
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("age"), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("avatar"), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("displayName"), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentConsent"), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentEmail"), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("securityQuestion"), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("username"), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("age").toString(), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("avatar").toString(), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("displayName").toString(), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentConsent").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentEmail").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("securityQuestion").toString(), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("username").toString(), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
     }
 }

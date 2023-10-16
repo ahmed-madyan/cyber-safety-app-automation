@@ -29,7 +29,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -48,7 +48,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -64,7 +64,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -80,7 +80,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -97,7 +97,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "notExistUserName", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -115,7 +115,7 @@ public class PutProfileNewParentEmail {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PARENT_EMAIL.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)

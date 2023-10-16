@@ -36,7 +36,7 @@ public class GetProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(GET)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .addHeaders(headersMap)
                         .setContentType(ContentType.JSON)
@@ -50,7 +50,7 @@ public class GetProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(GET)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .setExpectedStatusCode(SC_UNAUTHORIZED)
@@ -59,13 +59,13 @@ public class GetProfile {
     }
 
     public static void invokeGetProfileEndpointWithInValidForbiddenRequest() {
-        String jsonFilePath = ("src/test/resources/test_data/api/request/auth_access_tokens/AuthAccessTokens.json");
-        headersMap.put("token", JSONDataManager.getJSONData(jsonFilePath, "AUTH_ACCESS_TOKEN_FORBIDDEN", JSONDataManager.Types.STRING).toString());
+        String jsonFilePath_Auth = ("src/test/resources/test_data/api/request/auth_access_tokens/AuthAccessTokens.json");
+        headersMap.put("token", JSONDataManager.getJSONData(jsonFilePath_Auth, "AUTH_ACCESS_TOKEN_FORBIDDEN", JSONDataManager.Types.STRING).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(GET)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -79,7 +79,7 @@ public class GetProfile {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(GET)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "notExistUserName", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -88,12 +88,12 @@ public class GetProfile {
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("age"), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("avatar"), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("displayName"), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentConsent"), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentEmail"), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("securityQuestion"), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("username"), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("age").toString(), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("avatar").toString(), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("displayName").toString(), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentConsent").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentEmail").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("securityQuestion").toString(), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().attributeToBe(response.jsonPath().get("username").toString(), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
     }
 }

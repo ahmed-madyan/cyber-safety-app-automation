@@ -36,6 +36,6 @@ public class ErrorCodeAssertions {
      **/
     public static void apiResponsePayloadShouldContainsInvalidNotFoundErrorMessage(Response response) {
         assert response != null;
-        Assertions.hardAssert().objectEquals(response.jsonPath().get("Message"), JSONDataManager.getJSONData(jsonFilePath, "Profile_InvalidNotFoundErrorMessage", JSONDataManager.Types.STRING));
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("message"), JSONDataManager.getJSONData(jsonFilePath, "Profile_InvalidNotFoundErrorMessage", JSONDataManager.Types.STRING));
     }
 }

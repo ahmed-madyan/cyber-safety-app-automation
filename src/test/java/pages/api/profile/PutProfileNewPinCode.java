@@ -29,7 +29,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -48,7 +48,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -64,7 +64,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}", ""))
                         .setContentType(ContentType.JSON)
                         .setExpectedStatusCode(HttpStatus.SC_UNAUTHORIZED)
@@ -79,7 +79,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}", ""))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
@@ -95,7 +95,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "notExistUserName", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
@@ -113,7 +113,7 @@ public class PutProfileNewPinCode {
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PUT)
-                        .setBaseUri(BaseURI.SIT.getBaseURI())
+                        .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.NEW_PIN_CODE.getBasePath().replace("{username}",
                                 JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)

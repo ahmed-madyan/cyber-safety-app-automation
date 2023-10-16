@@ -26,7 +26,7 @@ public class PostAuthenticatedToken {
         authenticatedTokenReq.setPassword(JSONDataManager.getJSONData(jsonFilePath, "pinCode", JSONDataManager.Types.STRING).toString());
         authenticatedTokenReq.setReturnSecureToken(true);
 
-        queryParametersMap.put("key", FireBaseAPIKey.KEY.getFireBaseAPIKey());
+        queryParametersMap.put("key", FireBaseAPIKey.KEY_PROD.getFireBaseAPIKey());
         response =
                 APIActions
                         .setRequestSpecifications()

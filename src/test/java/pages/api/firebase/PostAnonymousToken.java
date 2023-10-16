@@ -6,8 +6,8 @@ import api.driver.APIActions;
 import api.driver.RequestMethod;
 import api.keys.FireBaseAPIKey;
 import api.pojo.responses.firebase.AnonymousToken_Res;
-import context.ScenarioContext;
 import context.Context;
+import context.ScenarioContext;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import logger.Log4JLogger;
@@ -21,7 +21,7 @@ public class PostAnonymousToken {
 
     public static void invokeAnonymousFireBaseIdentityProviderBasePathWithValidKey() {
         Map<String, String> queryParametersMap = new HashMap<>();
-        queryParametersMap.put("key", FireBaseAPIKey.KEY.getFireBaseAPIKey());
+        queryParametersMap.put("key", FireBaseAPIKey.KEY_PROD.getFireBaseAPIKey());
         response =
                 APIActions
                         .setRequestSpecifications()
