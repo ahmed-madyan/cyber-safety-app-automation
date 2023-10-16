@@ -58,7 +58,6 @@ public class GetProfile {
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
 
-    //
     public static void invokeGetProfileEndpointWithInValidForbiddenRequest() {
         String jsonFilePath = ("src/test/resources/test_data/api/request/auth_access_tokens/AuthAccessTokens.json");
         headersMap.put("token", JSONDataManager.getJSONData(jsonFilePath, "AUTH_ACCESS_TOKEN_FORBIDDEN", JSONDataManager.Types.STRING).toString());
