@@ -11,7 +11,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import lombok.Getter;
 import lombok.Setter;
-import org.testng.annotations.Test;
 import pages.api.firebase.PostAuthenticatedToken;
 import readers.json_reader.JSONDataManager;
 
@@ -44,9 +43,6 @@ public class GetProfile {
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
         setProfile(response.as(Profile_Res.class));
-
-//        System.out.println(BasePath.PROFILE.getBasePath().replace("{username}",
-//                JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()));
     }
 
     public static void invokeGetProfileEndpointWithInValidUnauthorizedRequest() {
