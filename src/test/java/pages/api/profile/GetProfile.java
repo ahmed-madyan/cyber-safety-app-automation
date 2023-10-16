@@ -18,19 +18,17 @@ import readers.json_reader.JSONDataManager;
 import java.util.HashMap;
 
 import static api.driver.RequestMethod.GET;
-import static org.apache.http.HttpStatus.*;
+import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
 public class GetProfile {
     private static Response response = null;
     private static final String jsonFilePath = ("src/test/resources/test_data/api/request/profile/Profile.json");
-    private static final String endpoint = ("/profile-management-api/profile/{username}");
     private static final HashMap<String, String> headersMap = new HashMap<>();
 
     @Setter
     @Getter
     private static Profile_Res profile = new Profile_Res();
 
-    @Test
     public static void invokeGetProfileEndpointWithValidRequest() {
         PostAuthenticatedToken.invokeAuthenticatedFireBaseIdentityProviderBasePathWithValidKey();
         PostAuthenticatedToken.extractAuthenticatedJWTToken();
@@ -46,6 +44,9 @@ public class GetProfile {
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
         setProfile(response.as(Profile_Res.class));
+
+//        System.out.println(BasePath.PROFILE.getBasePath().replace("{username}",
+//                JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()));
     }
 
     public static void invokeGetProfileEndpointWithInValidUnauthorizedRequest() {

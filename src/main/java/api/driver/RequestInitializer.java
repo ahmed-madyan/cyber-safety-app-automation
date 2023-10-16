@@ -30,7 +30,7 @@ public class RequestInitializer {
     private Map<String, String> queryParams = null;
     private Map<String, String> formParams = null;
     private ContentType contentType = null;
-    private Boolean urlEncodingEnabled = false;
+    private Boolean urlEncodingEnabled = null;
     private Integer httpStatusCode = null;
     private RestAssuredConfig restAssuredConfig = null;
     private AuthenticationScheme authenticationScheme = null;
