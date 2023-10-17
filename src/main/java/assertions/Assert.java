@@ -239,4 +239,23 @@ public class Assert {
         }
         return this;
     }
+
+    public Assert assertNotNull(@NotNull final Object expected) {
+        try {
+            new Assertion().assertNotNull(expected);
+            Log4JLogger.logINFO(Assert.class, new Object() {}.getClass().getEnclosingMethod().getName(), "Actual condition is: {" + expected + "}");
+        } catch (Exception e) {
+            Exceptions.handle(getClass(), e);
+        }
+        return this;
+    }
+    public Assert assertNull(@NotNull final Object expected) {
+        try {
+            new Assertion().assertNull(expected);
+            Log4JLogger.logINFO(Assert.class, new Object() {}.getClass().getEnclosingMethod().getName(), "Actual condition is: {" + null + "}");
+        } catch (Exception e) {
+            Exceptions.handle(getClass(), e);
+        }
+        return this;
+    }
 }

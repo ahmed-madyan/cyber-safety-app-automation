@@ -5,13 +5,13 @@ import api.base_uris.BaseURI;
 import api.driver.APIActions;
 import api.driver.RequestMethod;
 import api.pojo.responses.content.Content_Res;
+import assertions.Assertions;
 import context.Context;
 import context.ScenarioContext;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import logger.Log4JLogger;
-import org.testng.Assert;
 import readers.json_reader.JSONDataManager;
 
 import java.util.HashMap;
@@ -63,7 +63,7 @@ public class GetFullContentList {
                 .addHeaders(headersMap)
                 .setExpectedStatusCode(SC_FORBIDDEN)
                 .sendRequest();
-        Assert.assertEquals(response.getStatusCode(), SC_FORBIDDEN);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), SC_FORBIDDEN);
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
 
@@ -87,39 +87,40 @@ public class GetFullContentList {
         List<?> expectedListOfSuggested = (List<?>) JSONDataManager.getJSONData(jsonFilePath, "Content.suggested", JSONDataManager.Types.LIST);
         List<?> expectedListOfTopics = (List<?>) JSONDataManager.getJSONData(jsonFilePath, "Content.topics", JSONDataManager.Types.LIST);
         for (int i = 0; i < contentList.size() - 1; i++) {
-            Assert.assertEquals(contentList.get(i).getContentId(), expectedListOfContentIDs.get(i));
-            Assert.assertEquals(contentList.get(i).getContentTitle(), expectedListOfTitles.get(i));
-            Assert.assertEquals(contentList.get(i).getContentType(), expectedListContentTypes.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getContentId(), expectedListOfContentIDs.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getContentTitle(), expectedListOfTitles.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getContentType(), expectedListContentTypes.get(i));
             if (expectedListOfDuration.get(i) == null) {
-                Assert.assertEquals(contentList.get(i).getDuration(), 0);
-            } else Assert.assertEquals(contentList.get(i).getDuration(), expectedListOfDuration.get(i));
-            Assert.assertEquals(contentList.get(i).getIconURL(), expectedListOfIconURLs.get(i));
-            Assert.assertEquals(contentList.get(i).getImageURL(), expectedListOfImageURLs.get(i));
-            Assert.assertEquals(contentList.get(i).getKeywords(), expectedListOfKeywords.get(i));
-            Assert.assertEquals(contentList.get(i).getMarginBottom(), expectedListOfMarginBottoms.get(i));
-            Assert.assertEquals(contentList.get(i).getMarginLeft(), expectedListOfMarginLefts.get(i));
-            Assert.assertEquals(contentList.get(i).getMarginRight(), expectedListOfMarginRights.get(i));
-            Assert.assertEquals(contentList.get(i).getMarginTop(), expectedListOfMarginTops.get(i));
-            Assert.assertEquals(contentList.get(i).getShapeURL(), expectedListOfShapeURLs.get(i));
-            Assert.assertEquals(contentList.get(i).isSuggested(), expectedListOfSuggested.get(i));
-            Assert.assertEquals(contentList.get(i).getTopics(), expectedListOfTopics.get(i));
+                Assertions.hardAssert().objectEquals(contentList.get(i).getDuration(), 0);
+            } else
+                Assertions.hardAssert().objectEquals(contentList.get(i).getDuration(), expectedListOfDuration.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getIconURL(), expectedListOfIconURLs.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getImageURL(), expectedListOfImageURLs.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getKeywords(), expectedListOfKeywords.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getMarginBottom(), expectedListOfMarginBottoms.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getMarginLeft(), expectedListOfMarginLefts.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getMarginRight(), expectedListOfMarginRights.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getMarginTop(), expectedListOfMarginTops.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getShapeURL(), expectedListOfShapeURLs.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).isSuggested(), expectedListOfSuggested.get(i));
+            Assertions.hardAssert().objectEquals(contentList.get(i).getTopics(), expectedListOfTopics.get(i));
         }
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assert.assertNotNull(response.getBody().jsonPath().get("contentId"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("contentTitle"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("contentType"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("duration"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("iconURL"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("imageURL"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("keywords"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("marginBottom"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("marginLeft"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("marginRight"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("marginTop"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("shapeURL"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("suggested"));
-        Assert.assertNotNull(response.getBody().jsonPath().get("topics"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentId"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentTitle"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentType"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("duration"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("iconURL"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("imageURL"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("keywords"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginBottom"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginLeft"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginRight"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginTop"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("shapeURL"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("suggested"));
+        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("topics"));
     }
 }

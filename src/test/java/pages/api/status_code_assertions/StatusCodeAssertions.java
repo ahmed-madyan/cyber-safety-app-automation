@@ -1,5 +1,6 @@
 package pages.api.status_code_assertions;
 
+import assertions.Assertions;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 
@@ -9,7 +10,7 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_OK(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_OK);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_OK);
     }
 
     /**
@@ -17,7 +18,7 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_CREATED(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_CREATED);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_CREATED);
     }
 
     /**
@@ -25,7 +26,7 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_BAD_REQUEST(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_BAD_REQUEST);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_BAD_REQUEST);
     }
 
     /**
@@ -33,7 +34,7 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_UNAUTHORIZED(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_UNAUTHORIZED);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_UNAUTHORIZED);
     }
 
     /**
@@ -41,7 +42,7 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_FORBIDDEN(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_FORBIDDEN);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_FORBIDDEN);
     }
 
     /**
@@ -49,6 +50,6 @@ public class StatusCodeAssertions {
      **/
     public static void apiResponseStatusCodeShouldBeSC_NOT_FOUND(Response response) {
         assert response != null;
-        response.then().assertThat().statusCode(HttpStatus.SC_NOT_FOUND);
+        Assertions.hardAssert().objectEquals(response.getStatusCode(), HttpStatus.SC_NOT_FOUND);
     }
 }

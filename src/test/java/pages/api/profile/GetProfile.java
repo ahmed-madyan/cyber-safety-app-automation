@@ -88,12 +88,12 @@ public class GetProfile {
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("age").toString(), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("avatar").toString(), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("displayName").toString(), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentConsent").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("parentEmail").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("securityQuestion").toString(), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
-        Assertions.hardAssert().attributeToBe(response.jsonPath().get("username").toString(), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("age").toString(), JSONDataManager.getJSONData(jsonFilePath, "age", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("avatar").toString(), JSONDataManager.getJSONData(jsonFilePath, "avatar", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("displayName").toString(), JSONDataManager.getJSONData(jsonFilePath, "displayName", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentConsent").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentConsent", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("parentEmail").toString(), JSONDataManager.getJSONData(jsonFilePath, "parentEmail", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("securityQuestion").toString(), JSONDataManager.getJSONData(jsonFilePath, "securityQuestion", JSONDataManager.Types.STRING).toString());
+        Assertions.hardAssert().objectEquals(response.jsonPath().get("username").toString(), JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
     }
 }
