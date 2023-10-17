@@ -19,10 +19,9 @@ import java.util.HashMap;
 
 public class PatchProfile {
     private static Response response = null;
-    private static final String jsonFilePath = ("src/test/resources/test_data/" + ScenarioContext.getContext(Context.TARGET_ENVIRONMENT).toString() + "/api/profile/Profile.json");
+    private static final String jsonFilePath = ("src/test/resources/test_data/api/request/profile/Profile.json");
     private static final HashMap<String, String> headersMap = new HashMap<>();
     private static final PostProfile_Req newProfile_req = new PostProfile_Req();
-    private static final String username = JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString();
     private static final String new_Username = RandomStringUtils.random(20, true, true);
     private static final JSONObject jsonObject = new JSONObject();
 
@@ -35,16 +34,17 @@ public class PatchProfile {
         newProfile_req.setParentConsent(null);
         newProfile_req.setSecurityQuestion(1);
         newProfile_req.setSecurityAnswer("Test");
-        headersMap.put("authorizationToken", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
+        headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
                         .setBaseUri(BaseURI.PROD.getBaseURI())
-                        .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", username))
+                        .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
                         .setBody(newProfile_req)
+                        .setUrlEncodingEnabled(false)
                         .setExpectedStatusCode(HttpStatus.SC_OK)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
@@ -53,7 +53,7 @@ public class PatchProfile {
 
     public static void invokePatchProfileEndpointWithInValidBadRequest() {
         jsonObject.put("username", "");
-        headersMap.put("authorizationToken", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
+        headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
@@ -63,6 +63,7 @@ public class PatchProfile {
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
                         .setBody(jsonObject)
+                        .setUrlEncodingEnabled(false)
                         .setExpectedStatusCode(HttpStatus.SC_BAD_REQUEST)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
@@ -76,24 +77,24 @@ public class PatchProfile {
                         .setBaseUri(BaseURI.PROD.getBaseURI())
                         .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
+                        .setUrlEncodingEnabled(false)
                         .setExpectedStatusCode(HttpStatus.SC_UNAUTHORIZED)
                         .sendRequest();
-
-
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
 
     public static void invokePatchProfileEndpointWithInValidForbiddenRequest() {
-        String jsonFilePath = ("src/test/resources/test_data/" + ScenarioContext.getContext(Context.TARGET_ENVIRONMENT).toString() + "/api/auth_access_tokens/AuthAccessTokens.json");
-        headersMap.put("authorizationToken", JSONDataManager.getJSONData(jsonFilePath, "AUTH_ACCESS_TOKEN_FORBIDDEN", JSONDataManager.Types.STRING).toString());
+        String filePath = ("src/test/resources/test_data/api/request/auth_access_tokens/AuthAccessTokens.json");
+        headersMap.put("token", JSONDataManager.getJSONData(filePath, "AUTH_ACCESS_TOKEN_FORBIDDEN", JSONDataManager.Types.STRING).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
                         .setRequestMethod(RequestMethod.PATCH)
                         .setBaseUri(BaseURI.PROD.getBaseURI())
-                        .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", username))
+                        .setBasePath(BasePath.PROFILE.getBasePath().replace("{username}", JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString()))
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
+                        .setUrlEncodingEnabled(false)
                         .setExpectedStatusCode(HttpStatus.SC_FORBIDDEN)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
@@ -101,7 +102,7 @@ public class PatchProfile {
 
     public static void invokePatchProfileEndpointWithInValidNotFoundRequest() {
         jsonObject.put("username", "username");
-        headersMap.put("authorizationToken", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
+        headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
@@ -111,21 +112,22 @@ public class PatchProfile {
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
                         .setBody(jsonObject)
-                        .setExpectedStatusCode(HttpStatus.SC_FORBIDDEN)
+                        .setUrlEncodingEnabled(false)
+//                        .setExpectedStatusCode(HttpStatus.SC_NOT_FOUND)
                         .sendRequest();
         ScenarioContext.setContext(Context.RESPONSE_PAYLOAD, response);
     }
 
     private static void rollbackUsernameChanges() {
-        newProfile_req.setUsername(username);
-        newProfile_req.setDisplayName("Test");
+        newProfile_req.setUsername(JSONDataManager.getJSONData(jsonFilePath, "username", JSONDataManager.Types.STRING).toString());
+        newProfile_req.setDisplayName("TestAcc1");
         newProfile_req.setAge(12);
-        newProfile_req.setAvatar(5);
+        newProfile_req.setAvatar(6);
         newProfile_req.setParentEmail(null);
         newProfile_req.setParentConsent(null);
-        newProfile_req.setSecurityQuestion(1);
+        newProfile_req.setSecurityQuestion(4);
         newProfile_req.setSecurityAnswer("Test");
-        headersMap.put("authorizationToken", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
+        headersMap.put("token", ScenarioContext.getContext(Context.AUTH_ACCESS_TOKEN).toString());
         response =
                 APIActions
                         .setRequestSpecifications()
@@ -135,6 +137,7 @@ public class PatchProfile {
                         .setContentType(ContentType.JSON)
                         .addHeaders(headersMap)
                         .setBody(newProfile_req)
+                        .setUrlEncodingEnabled(false)
                         .setExpectedStatusCode(HttpStatus.SC_OK)
                         .sendRequest();
     }

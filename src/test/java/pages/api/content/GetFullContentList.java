@@ -12,7 +12,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import logger.Log4JLogger;
 import org.testng.Assert;
-import pages.api.firebase.PostAnonymousToken;
 import readers.json_reader.JSONDataManager;
 
 import java.util.HashMap;
@@ -21,7 +20,7 @@ import java.util.Map;
 
 import static org.apache.http.HttpStatus.*;
 
-public class GetFullContentList extends PostAnonymousToken {
+public class GetFullContentList {
     private static Response response = null;
     private static final Map<String, String> headersMap = new HashMap<>();
 

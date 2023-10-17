@@ -24,6 +24,5 @@ Feature: Retrieve profile details By uuid
   @Get_Profile_InValid_Request_NotFound
   Scenario: Validate that Get /profile response should be SC_NOT_FOUND when invoke api with invalid request not found
     Given User invoke Get profile api with invalid request not found
-    When User invoke Get profile api with invalid request not found
     Then API response status code should be SC_NOT_FOUND.
     And API response payload should contains an invalid not found error message.
