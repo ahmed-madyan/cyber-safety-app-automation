@@ -109,19 +109,19 @@ public class GetFullContentList {
     }
 
     public static void assertResponsePayloadContainsAllExpectedParameters() {
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentId"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentTitle"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("contentType"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("duration"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("iconURL"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("imageURL"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("keywords"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginBottom"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginLeft"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginRight"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("marginTop"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("shapeURL"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("suggested"));
-        Assertions.hardAssert().assertNotNull(response.getBody().jsonPath().get("topics"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("contentId"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("contentTitle"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("contentType"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("duration"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("iconURL"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("imageURL"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("keywords"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("marginBottom"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("marginLeft"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("marginRight"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("marginTop"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("shapeURL"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("suggested"));
+        Assertions.hardAssert().responseAttributeNotNull(response, ("topics"));
     }
 }

@@ -372,4 +372,14 @@ public class Assert {
         }
         return this;
     }
+
+    public Assert responseAttributeNotNull(@NotNull final Response response, @NotNull final String jsonPath) {
+        try {
+            assertNotNull(response.jsonPath().get(jsonPath));
+
+        } catch (Exception e) {
+            Exceptions.handle(getClass(), e);
+        }
+        return this;
+    }
 }
