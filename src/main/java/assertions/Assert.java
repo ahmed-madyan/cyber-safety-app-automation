@@ -365,8 +365,10 @@ public class Assert {
 
     public Assert responseAttributeEquals(@NotNull final Response response, @NotNull final String jsonPath, @NotNull final Object expected) {
         try {
-            objectEquals(response.jsonPath().get(jsonPath), expected);
-
+            new Assertion().assertEquals(response.jsonPath().get(jsonPath), expected);
+            Log4JLogger.logINFO(Assert.class, new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Actual response attribute value{" + jsonPath + "} is equals to the expected {" + expected + "}");
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
@@ -375,8 +377,10 @@ public class Assert {
 
     public Assert responseAttributeNotNull(@NotNull final Response response, @NotNull final String jsonPath) {
         try {
-            assertNotNull(response.jsonPath().get(jsonPath));
-
+            new Assertion().assertNotNull(response.jsonPath().get(jsonPath));
+            Log4JLogger.logINFO(Assert.class, new Object() {
+                    }.getClass().getEnclosingMethod().getName(),
+                    "Expected response attribute: {" + jsonPath + "}" + " exists");
         } catch (Exception e) {
             Exceptions.handle(getClass(), e);
         }
