@@ -92,8 +92,9 @@ public class GetFullContentList {
             Assertions.hardAssert().objectEquals(contentList.get(i).getContentType(), expectedListContentTypes.get(i));
             if (expectedListOfDuration.get(i) == null) {
                 Assertions.hardAssert().objectEquals(contentList.get(i).getDuration(), 0);
-            } else
+            } else {
                 Assertions.hardAssert().objectEquals(contentList.get(i).getDuration(), expectedListOfDuration.get(i));
+            }
             Assertions.hardAssert().objectEquals(contentList.get(i).getIconURL(), expectedListOfIconURLs.get(i));
             Assertions.hardAssert().objectEquals(contentList.get(i).getImageURL(), expectedListOfImageURLs.get(i));
             Assertions.hardAssert().objectEquals(contentList.get(i).getKeywords(), expectedListOfKeywords.get(i));
