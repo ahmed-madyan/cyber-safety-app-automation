@@ -16,7 +16,7 @@
 <!--        <classes>-->
 <!--            <class name="runners.TestRunnerFE"/>-->
 <!--        </classes>-->
-    <!--</test>-->
+<!--    </test>-->
     <test name="API Regression Test">
         <classes>
             <class name="runners.TestRunnerAPI"/>
