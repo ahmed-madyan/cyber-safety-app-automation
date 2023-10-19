@@ -10,12 +10,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn test -Dtest=”testng-api.xml”'
             }
         }
         stage('Unit Test') {
             steps {
-                echo 'Building..'
+                bat 'mvn test -Dtest=”testng-api.xml”'
             }
         }
         stage('Integration Test') {
