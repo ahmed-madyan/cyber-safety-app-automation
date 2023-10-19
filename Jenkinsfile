@@ -17,28 +17,13 @@ pipeline {
         stage('API Testing') {
             steps {
                 echo 'API Testing..'
-                bat 'mvn test -Dfile=”testng-api.xml”'
+                bat 'mvn test -Dfile=testng-api.xml'
             }
-//            post {
-//                // If Maven was able to run the tests, even if some of the test
-//                // failed, record the test results and archive the jar file.
-//                success {
-//                    publishHTML([
-//                            allowMissing          : false,
-//                            alwaysLinkToLastBuild : false,
-//                            keepAll               : false,
-//                            reportDir             : 'Reports',
-//                            reportFiles           : 'Spark.html',
-//                            reportName            : 'ExtentReport-API',
-//                            reportTitles          : '',
-//                            useWrapperFileDirectly: true])
-//                }
-//            }
         }
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                bat 'mvn test -Dfile=”testng-android.xml”'
+                bat 'mvn test -Dfile=testng-android.xml'
             }
         }
     }
