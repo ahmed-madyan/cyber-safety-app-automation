@@ -18,9 +18,7 @@
         <maven.compiler.target>${maven.java.version}</maven.compiler.target>
         <maven.plugin.validation>VERBOSE</maven.plugin.validation>
         <!-- Maven surface plugin configurations -->                       <!-- Maven surface plugin configurations -->
-        <surefire.suiteXmlFiles>testng.xml</surefire.suiteXmlFiles>
-        <surefire.suiteXmlFiles>testng-api.xml</surefire.suiteXmlFiles>
-        <surefire.suiteXmlFiles>testng-android.xml</surefire.suiteXmlFiles>
+        <suiteXmlFile>testng.xml</suiteXmlFile>
         <!--- Dependencies versions -->                                                 <!--- Dependencies versions -->
         <!--- appium -->
         <appium.version>8.5.1</appium.version>
@@ -226,7 +224,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${surefire.suiteXmlFiles}</suiteXmlFile>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <!--suppress UnresolvedMavenProperty -->
                     <argLine>-javaagent:${com.browserstack:browserstack-java-sdk:jar}</argLine>
