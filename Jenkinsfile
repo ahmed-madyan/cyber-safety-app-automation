@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo 'Testing..'
             }
         }
         stage('Unit Test') {
