@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions
         (
                 publish = true,
-                features = {"src/test/java/features"},
+                features = {"src/test/java/features/api"},
                 glue = {"steps"},
                 tags = ("@Get_Profile_InValid_Request_Unauthorized"),
                 plugin =
