@@ -17,13 +17,13 @@ pipeline {
         stage('API Testing') {
             steps {
                 echo 'API Testing..'
-                bat 'mvn test -Dfile=testng-api.xml'
+                bat 'mvn test -DsuiteXmlFile=testng-api.xml'
             }
         }
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                bat 'mvn test -Dfile=testng-android.xml'
+                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
     }
