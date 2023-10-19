@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                bat 'mvn test -Dtest=”testng-api.xml”'
+                bat 'mvn test -Dfile=”testng-api.xml”'
             }
         }
         stage('Integration Test') {
