@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn clean'
+                bat(/"${maven}\bin\mvn" test/)
             }
         }
         stage('Unit Test') {
