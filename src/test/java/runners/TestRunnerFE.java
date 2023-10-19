@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions
         (
                 publish = true,
-                features = {"src/test/java/features"},
+                features = {"src/test/java/features/fe"},
                 glue = {"steps"},
                 tags = ("@Regression_FE"),
                 plugin =
