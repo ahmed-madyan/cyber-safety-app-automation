@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                bat 'mvn -Dmaven.test.failure.ignore=true install'
+                bat 'mvn test -Dtest=”testng-api.xml”'
             }
         }
         stage('Unit Test') {
