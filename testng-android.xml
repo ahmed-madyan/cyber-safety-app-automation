@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Cyber Safety Regression Test Suite" parallel="tests">
+    <!--     parallel= ["methods" | "tests" | "classes" | "instances"] -->
+    <test name="Android Regression Test">
+        <parameter name="PlatformName" value="Android"/>
+        <!-- PlatformName: [Android | iOS] -->
+        <classes>
+            <class name="runners.TestRunnerFE"/>
+        </classes>
+    </test>
+</suite>
