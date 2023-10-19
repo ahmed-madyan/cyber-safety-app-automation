@@ -19,43 +19,26 @@ pipeline {
                 echo 'API Testing..'
                 bat 'mvn test -Dfile=”testng-api.xml”'
             }
-            post {
-
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    publishHTML([
-                            allowMissing          : false,
-                            alwaysLinkToLastBuild : false,
-                            keepAll               : false,
-                            reportDir             : 'Reports',
-                            reportFiles           : 'Spark.html',
-                            reportName            : 'ExtentReport',
-                            reportTitles          : '',
-                            useWrapperFileDirectly: true])
-                }
-            }
+//            post {
+//                // If Maven was able to run the tests, even if some of the test
+//                // failed, record the test results and archive the jar file.
+//                success {
+//                    publishHTML([
+//                            allowMissing          : false,
+//                            alwaysLinkToLastBuild : false,
+//                            keepAll               : false,
+//                            reportDir             : 'Reports',
+//                            reportFiles           : 'Spark.html',
+//                            reportName            : 'ExtentReport-API',
+//                            reportTitles          : '',
+//                            useWrapperFileDirectly: true])
+//                }
+//            }
         }
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                bat 'mvn test -Dfile=”testng-api.xml”'
-            }
-            post {
-
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    publishHTML([
-                            allowMissing          : false,
-                            alwaysLinkToLastBuild : false,
-                            keepAll               : false,
-                            reportDir             : 'Reports',
-                            reportFiles           : 'Spark.html',
-                            reportName            : 'ExtentReport',
-                            reportTitles          : '',
-                            useWrapperFileDirectly: true])
-                }
+                bat 'mvn test -Dfile=”testng-android.xml”'
             }
         }
     }
