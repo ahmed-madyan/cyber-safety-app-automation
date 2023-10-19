@@ -14,19 +14,16 @@ pipeline {
                 bat 'mvn clean compile'
             }
         }
-        stage('Unit Test') {
+        stage('API Testing') {
             steps {
+                echo 'API Testing..'
                 bat 'mvn test -Dfile=”testng-api.xml”'
             }
         }
-        stage('Integration Test') {
+        stage('Android Testing') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('FrontEnd Test') {
-            steps {
-                echo 'Deploying....'
+                echo 'Android Testing..'
+                bat 'mvn test -Dfile=”testng-api.xml”'
             }
         }
     }
