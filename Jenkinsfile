@@ -1,30 +1,32 @@
 pipeline {
     agent any
     tools {
-        maven "MAVEN"
-        jdk "JDK"
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "MAVEN_HOME"
+    }
+    options {
+        skipStagesAfterUnstable()
     }
     stages {
-        stage('Initialize'){
-            steps{
-                echo "PATH = ${M2_HOME}/bin:${PATH}"
-                echo "M2_HOME = /opt/maven"
-            }
-        }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/demopipelinetask/my-app") {
-                    sh 'mvn -B -DskipTests clean package'
-                }
+                sh 'mvn -Dmaven.test.failure.ignore=true install'
             }
         }
-    }
-    post {
-        always {
-            junit(
-                    allowEmptyResults: true,
-                    testResults: '*/test-reports/.xml'
-            )
+        stage('Unit Test') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Integration Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('FrontEnd Test') {
+            steps {
+                echo 'Deploying....'
+            }
         }
     }
 }
