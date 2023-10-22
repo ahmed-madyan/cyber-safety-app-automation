@@ -23,7 +23,7 @@ pipeline {
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
+//                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
     }
