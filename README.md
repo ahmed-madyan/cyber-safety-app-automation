@@ -5,7 +5,7 @@ Browser Stack integration steps
 Sample request for uploading the App with custom ID
 curl -u "ahmedmadyan_oxTGNa:efFbRGj4yaxcVuPxyJKs" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@C:\Users\_VOIS\Documents\Mobile Applications\Android\Tozi.apk" -F "custom_id=ToziAppApk"
 Sample response
-{"app_url":"bs://27ad12d596d66cde98dc4d764f22f16b5c2a4e9c","custom_id":"ToziAppApk","shareable_id":"ahmedmadyan_oxTGNa/ToziAppApk"}
+{"app_url":"bs://cc0a3ffbf7b5126018c2f593bd32f24fe48d386a","custom_id":"ToziAppApk","shareable_id":"ahmedmadyan_oxTGNa/ToziAppApk"}
 
 curl -u "ahmedmadyan_oxTGNa:efFbRGj4yaxcVuPxyJKs" -X POST "https://api-cloud.browserstack.com/app-automate/upload" -F "file=@C:\Users\_VOIS\Documents\Mobile Applications\iOS\Tozi.ipa" -F "custom_id=ToziAppIpa"
 
