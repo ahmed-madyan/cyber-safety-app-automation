@@ -33,8 +33,8 @@ pipeline {
                 publishHTML(target: [allowMissing         : false,
                                      alwaysLinkToLastBuild: true,
                                      keepAll              : true,
-                                     reportDir            : 'reports',
-                                     reportFiles          : 'SparkReport/ExtentReport.html',
+                                     reportDir            : 'SparkReport',
+                                     reportFiles          : 'ExtentReport.html',
                                      reportName           : 'My Reports',
                                      reportTitles         : 'The Report'])
             }
