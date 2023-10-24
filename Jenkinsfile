@@ -27,5 +27,16 @@ pipeline {
 //                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
+        stage('Extent Report') {
+            steps {
+                publishHTML(target: [allowMissing         : false,
+                                     alwaysLinkToLastBuild: true,
+                                     keepAll              : true,
+                                     reportDir            : 'reports',
+                                     reportFiles          : 'SparkReport/ExtentReport.html',
+                                     reportName           : 'My Reports',
+                                     reportTitles         : 'The Report'])
+            }
+        }
     }
 }
