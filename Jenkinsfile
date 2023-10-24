@@ -29,6 +29,7 @@ pipeline {
         }
         stage('Extent Report') {
             steps {
+                echo %cd%
                 publishHTML(target: [allowMissing         : false,
                                      alwaysLinkToLastBuild: true,
                                      keepAll              : true,
