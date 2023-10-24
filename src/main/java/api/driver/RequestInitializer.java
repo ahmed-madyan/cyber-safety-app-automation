@@ -2,7 +2,6 @@ package api.driver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.Exceptions;
-import io.restassured.RestAssured;
 import io.restassured.authentication.AuthenticationScheme;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.RestAssuredConfig;
@@ -231,28 +230,21 @@ public class RequestInitializer {
         try {
             if (httpStatusCode != null) {
                 switch (requestMethod) {
-                    case GET ->
-                            response = RestAssured.given().spec(buildRequest()).get().then().statusCode(httpStatusCode).extract().response();
-                    case POST ->
-                            response = RestAssured.given().spec(buildRequest()).post().then().statusCode(httpStatusCode).extract().response();
-                    case PUT ->
-                            response = RestAssured.given().spec(buildRequest()).put().then().statusCode(httpStatusCode).extract().response();
-                    case DELETE ->
-                            response = RestAssured.given().spec(buildRequest()).delete().then().statusCode(httpStatusCode).extract().response();
-                    case PATCH ->
-                            response = RestAssured.given().spec(buildRequest()).patch().then().statusCode(httpStatusCode).extract().response();
+                    case GET -> response = new GetRequest().send(buildRequest(), httpStatusCode);
+                    case POST -> response = new PostRequest().send(buildRequest(), httpStatusCode);
+                    case PUT -> response = new PutRequest().send(buildRequest(), httpStatusCode);
+                    case DELETE -> response = new DeleteRequest().send(buildRequest(), httpStatusCode);
+                    case PATCH -> response = new PatchRequest().send(buildRequest(), httpStatusCode);
                     default -> Log4JLogger.logWARN(getClass(), new Object() {
                     }.getClass().getEnclosingMethod().getName(), "Kindly select valid HTTP request method");
                 }
             } else {
                 switch (requestMethod) {
-                    case GET -> response = RestAssured.given().spec(buildRequest()).get().then().extract().response();
-                    case POST -> response = RestAssured.given().spec(buildRequest()).post().then().extract().response();
-                    case PUT -> response = RestAssured.given().spec(buildRequest()).put().then().extract().response();
-                    case DELETE ->
-                            response = RestAssured.given().spec(buildRequest()).delete().then().extract().response();
-                    case PATCH ->
-                            response = RestAssured.given().spec(buildRequest()).patch().then().extract().response();
+                    case GET -> response = new GetRequest().send(buildRequest());
+                    case POST -> response = new PostRequest().send(buildRequest());
+                    case PUT -> response = new PutRequest().send(buildRequest());
+                    case DELETE -> response = new DeleteRequest().send(buildRequest());
+                    case PATCH -> response = new PatchRequest().send(buildRequest());
                     default -> Log4JLogger.logWARN(getClass(), "Kindly select valid HTTP request method");
                 }
             }
