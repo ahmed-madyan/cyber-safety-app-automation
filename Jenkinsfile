@@ -18,7 +18,7 @@ pipeline {
         stage('API Testing') {
             steps {
                 echo 'API Testing..'
-               // sudo 'mvn test -DsuiteXmlFile=testng-api.xml'
+               sh 'mvn test -DsuiteXmlFile=testng-api.xml'
             }
         }
         stage('Android Testing') {
@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Extent Report') {
             steps {
-                sudo 'echo $cd'
+                echo '$cd'
             //    publishHTML(target: [allowMissing         : false,
            //                          alwaysLinkToLastBuild: true,
               //                       keepAll              : true,
