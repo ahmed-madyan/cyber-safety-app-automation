@@ -11,19 +11,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                //echo 'Clean and compile..'
+                echo 'Clean and compile..'
                // sudo 'mvn clean compile'
             }
         }
         stage('API Testing') {
             steps {
-                //echo 'API Testing..'
+                echo 'API Testing..'
                // sudo 'mvn test -DsuiteXmlFile=testng-api.xml'
             }
         }
         stage('Android Testing') {
             steps {
-                //echo 'Android Testing..'
+                echo 'Android Testing..'
 //                sudo 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
