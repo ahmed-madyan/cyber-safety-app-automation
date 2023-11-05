@@ -27,9 +27,9 @@ pipeline {
 //                sudo 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
-       // stage('Extent Report') {
-           // steps {
-                //bat 'echo %cd%'
+        stage('Extent Report') {
+            steps {
+                bat 'echo %cd%'
             //    publishHTML(target: [allowMissing         : false,
            //                          alwaysLinkToLastBuild: true,
               //                       keepAll              : true,
@@ -37,7 +37,7 @@ pipeline {
               //                       reportFiles          : 'ExtentReport.html',
               //                       reportName           : 'My Reports',
                //                      reportTitles         : 'The Report'])
-          //  }
-        //}
+           }
+        }
     }
 }
