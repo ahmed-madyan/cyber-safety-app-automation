@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean and compile..'
-               // sudo 'mvn clean compile'
+                sh 'mvn clean compile'
             }
         }
         stage('API Testing') {
