@@ -3,7 +3,7 @@ pipeline {
 //    git credentialsId: 'PAT-Jenkins', url: 'https://github.com/ahmed-madyan/cyber-safety-app-automation.git'
    tools {
         // Install the Maven version configured as "M3" and add it to the path.
-       maven "Maven home"
+       maven "M2_HOME"
    }
     options {
         skipStagesAfterUnstable()
