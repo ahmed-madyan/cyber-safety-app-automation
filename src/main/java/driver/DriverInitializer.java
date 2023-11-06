@@ -43,14 +43,16 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
         }
         Log4JLogger.logINFO(getClass(), "Session Id: " + getDriver().getSessionId());
         switch (platformName) {
-            case "iOS":
+            case "iOS": {
                 if (Elements.elementState().isDisplayed(AppiumBy.accessibilityId("Allow"))) {
                     Elements.elementActions().click(AppiumBy.accessibilityId("Allow"));
                 }
-            case "Android":
+            }
+            case "Android": {
                 if (Elements.elementState().isDisplayed(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button"))) {
                     Elements.elementActions().click(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button"));
                 }
+            }
         }
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
