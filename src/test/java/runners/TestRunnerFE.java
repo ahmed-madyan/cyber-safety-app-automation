@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
                 publish = true,
                 features = {"src/test/java/features/fe"},
                 glue = {"steps"},
-                tags = ("@Regression_FE"),
+                tags = ("@OnBoardingScreen"),
                 plugin =
                         {
                                 "pretty",
