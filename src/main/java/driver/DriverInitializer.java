@@ -42,7 +42,7 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             }
         }
         Log4JLogger.logINFO(getClass(), "Session Id: " + getDriver().getSessionId());
-        switch (platformName) {
+        switch (getPlatform()) {
             case "iOS": {
                 if (Elements.elementState().isDisplayed(AppiumBy.accessibilityId("Allow"))) {
                     Elements.elementActions().click(AppiumBy.accessibilityId("Allow"));
