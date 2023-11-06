@@ -2,9 +2,10 @@
 Feature: terms and conditions - pop up
 
   Background: Skip to cosmos screen
-    Given User navigates to on boarding screen
-    When Swipe On Boarding Cards
-    When User clicks Go on Topics Screen
+    Given User allow notifications po up
+    When User navigates to on boarding screen
+    And Swipe On Boarding Cards
+    And User clicks Go on Topics Screen
     Then User should be redirected to terms and conditions pop up
 
   @TermsAndConditions_TC1   @TermsAndConditions_Content
