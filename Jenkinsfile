@@ -23,13 +23,13 @@ pipeline {
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                sudo 'mvn test -DsuiteXmlFile=testng-android.xml'
+                sh 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
         stage('iOS Testing') {
             steps {
                 echo 'iOS Testing..'
-                sudo 'mvn test -DsuiteXmlFile=testng-ios.xml'
+                sh 'mvn test -DsuiteXmlFile=testng-ios.xml'
             }
         }
         stage('Extent Report') {
