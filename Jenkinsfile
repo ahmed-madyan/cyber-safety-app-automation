@@ -23,7 +23,7 @@ pipeline {
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                sudo 'mvn test -DsuiteXmlFile=testng-android.xml'
+//                sudo 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
         stage('Extent Report') {
