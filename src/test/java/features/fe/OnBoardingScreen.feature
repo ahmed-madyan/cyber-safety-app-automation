@@ -1,9 +1,6 @@
 @Regression @Regression_FE @OnBoardingScreen
 Feature: On Boarding - 4 Screens
 
-#  Background:
-#    Given User allow notifications po up
-
   @OnBoardingScreen_TC1
   Scenario: Validate on boarding 4 screens text
     Given User navigates to on boarding screen
