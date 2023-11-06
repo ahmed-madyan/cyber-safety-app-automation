@@ -2,7 +2,6 @@
 Feature: terms and conditions - pop up
 
   Background: Skip to cosmos screen
-    Given User allow notifications po up
     When User navigates to on boarding screen
     And Swipe On Boarding Cards
     And User clicks Go on Topics Screen
