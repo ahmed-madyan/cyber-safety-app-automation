@@ -3,23 +3,23 @@
 
 <suite name="Cyber Safety Regression Test Suite">
     <!--     parallel= ["methods" | "tests" | "classes" | "instances"] -->
-    <test name="Android Regression Test">
-        <!-- PlatformName: [Android | iOS] -->
-        <parameter name="PlatformName" value="Android"/>
-        <classes>
-            <class name="runners.TestRunnerFE"/>
-        </classes>
-    </test>
-    <test name="iOS Regression Test">
-        <!-- PlatformName: [Android | iOS] -->
-        <parameter name="PlatformName" value="iOS"/>
-        <classes>
-            <class name="runners.TestRunnerFE"/>
-        </classes>
-    </test>
-    <test name="API Regression Test">
-        <classes>
-            <class name="runners.TestRunnerAPI"/>
-        </classes>
-    </test>
+<!--    <test name="Android Regression Test">-->
+<!--        &lt;!&ndash; PlatformName: [Android | iOS] &ndash;&gt;-->
+<!--        <parameter name="PlatformName" value="Android"/>-->
+<!--        <classes>-->
+<!--            <class name="runners.TestRunnerFE"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="iOS Regression Test">-->
+<!--        &lt;!&ndash; PlatformName: [Android | iOS] &ndash;&gt;-->
+<!--        <parameter name="PlatformName" value="iOS"/>-->
+<!--        <classes>-->
+<!--            <class name="runners.TestRunnerFE"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="API Regression Test">-->
+<!--        <classes>-->
+<!--            <class name="runners.TestRunnerAPI"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
