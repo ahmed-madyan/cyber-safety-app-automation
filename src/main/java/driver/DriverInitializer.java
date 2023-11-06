@@ -1,5 +1,6 @@
 package driver;
 
+import elements.Elements;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -37,6 +38,12 @@ public class DriverInitializer extends AbstractTestNGCucumberTests {
             }
         }
         Log4JLogger.logINFO(getClass(), "Session Id: " + getDriver().getSessionId());
+        switch (platformName) {
+            case "Android":
+                Elements.elementActions().click(AppiumBy.accessibilityId("Allow"));
+            case "iOS":
+                Elements.elementActions().click(AppiumBy.id("com.android.permissioncontroller:id/permission_allow_button"));
+        }
         Waits.fluentlyWait().visibilityOfElementLocated(AppiumBy.accessibilityId("onBoarding_Card_description_0"));
     }
 
