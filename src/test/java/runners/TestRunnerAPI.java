@@ -12,8 +12,8 @@ import io.cucumber.testng.CucumberOptions;
                 plugin =
                         {
                                 "pretty",
-                                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-                                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+//                                "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+//                                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
                         }
         )
 

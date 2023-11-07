@@ -11,25 +11,25 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Clean and compile..'
-                sh 'mvn clean compile'
+                bat 'mvn clean compile'
             }
         }
         stage('API Testing') {
             steps {
                 echo 'API Testing..'
-                sh 'mvn test -DsuiteXmlFile=testng-api.xml'
+                bat 'mvn test -DsuiteXmlFile=testng-api.xml'
             }
         }
         stage('Android Testing') {
             steps {
                 echo 'Android Testing..'
-                sh 'mvn test -DsuiteXmlFile=testng-android.xml'
+                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
             }
         }
         stage('iOS Testing') {
             steps {
                 echo 'iOS Testing..'
-                sh 'mvn test -DsuiteXmlFile=testng-ios.xml'
+                bat 'mvn test -DsuiteXmlFile=testng-ios.xml'
             }
         }
         stage('Extent Report') {
@@ -40,9 +40,23 @@ pipeline {
                                      keepAll              : true,
                                      reportDir            : 'SparkReport',
                                      reportFiles          : 'ExtentReport.html',
-                                     reportName           : 'My Reports',
-                                     reportTitles         : 'The Report'])
+                                     reportName  : 'Extent Reports',
+                                     reportTitles: 'The Report'])
             }
         }
+//        stage('Allure Report') {
+//            steps {
+//                bat 'cd allure-results'
+//                bat 'allure serve allure-results'
+//                allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+//                publishHTML(target: [allowMissing         : false,
+//                                     alwaysLinkToLastBuild: true,
+//                                     keepAll              : true,
+//                                     reportDir            : 'SparkReport',
+//                                     reportFiles          : 'ExtentReport.html',
+//                                     reportName           : 'Allure Reports',
+//                                     reportTitles         : 'The Report'])
+//            }
+//        }
     }
 }

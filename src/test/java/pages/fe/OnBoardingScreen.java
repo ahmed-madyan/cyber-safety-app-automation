@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import readers.json_reader.JSONDataManager;
 
 public class OnBoardingScreen {
-    private static final By ON_BOARDING_CARD_TITLE_1 = AppiumBy.accessibilityId("onBoarding_Card_title_0");
+    private static final By ON_BOARDING_CARD_TITLE_1 = AppiumBy.name("onBoarding_Card_title_0");
     private static final By ON_BOARDING_CARD_DESCRIPTION_1 = AppiumBy.accessibilityId("onBoarding_Card_description_0");
     private static final By ON_BOARDING_CARD_TITLE_2 = AppiumBy.accessibilityId("onBoarding_Card_title_1");
     private static final By ON_BOARDING_CARD_DESCRIPTION_2 = AppiumBy.accessibilityId("onBoarding_Card_description_1");
