@@ -24,9 +24,10 @@ public class OnBoardingScreen {
     private static final  By ON_BOARDING_CARD_CAROUSEL = AppiumBy.accessibilityId("onBoarding_CardCarousel");
     private static final String TEST_DATA_FILE_PATH = ("src/test/resources/test_data/fe/expected/OnBoardingScreens.json");
     public static void swipeOnBoardingCards() {
-        swipeOnBoardingCard_1();
-        swipeOnBoardingCard_2();
-        swipeOnBoardingCard_3();
+//        swipeOnBoardingCard_1();
+//        swipeOnBoardingCard_2();
+//        swipeOnBoardingCard_3();
+        Elements.gestureActions().swipe(ON_BOARDING_CARD_CAROUSEL, ON_BOARDING_BUTTON_COMPONENT_4, GestureDirection.LEFT);
         clickOnBoardingButton();
     }
 
