@@ -5,7 +5,6 @@ import elements.Elements;
 import elements.gesture_actions.GestureDirection;
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.By;
-import readers.json_reader.JSONDataManager;
 
 public class OnBoardingScreen {
     private static final By ON_BOARDING_CARD_TITLE_1 = AppiumBy.name("onBoarding_Card_title_0");
@@ -22,6 +21,7 @@ public class OnBoardingScreen {
     private static final By PAGINATION_DOT_2 = AppiumBy.name("Pagination_Dot_1");
     private static final By PAGINATION_DOT_3 = AppiumBy.name("Pagination_Dot_2");
     private static final By PAGINATION_DOT_4 = AppiumBy.name("Pagination_Dot_3");
+    private static final  By ON_BOARDING_CARD_CAROUSEL = AppiumBy.accessibilityId("onBoarding_CardCarousel");
     private static final String TEST_DATA_FILE_PATH = ("src/test/resources/test_data/fe/expected/OnBoardingScreens.json");
     public static void swipeOnBoardingCards() {
         swipeOnBoardingCard_1();
@@ -31,15 +31,15 @@ public class OnBoardingScreen {
     }
 
     public static void swipeOnBoardingCard_1() {
-        Elements.gestureActions().swipe(ON_BOARDING_CARD_TITLE_1, GestureDirection.LEFT);
+        Elements.gestureActions().swipe(ON_BOARDING_CARD_CAROUSEL, GestureDirection.LEFT);
     }
 
     public static void swipeOnBoardingCard_2() {
-        Elements.gestureActions().swipe(ON_BOARDING_CARD_TITLE_2, GestureDirection.LEFT);
+        Elements.gestureActions().swipe(ON_BOARDING_CARD_CAROUSEL, GestureDirection.LEFT);
     }
 
     public static void swipeOnBoardingCard_3() {
-        Elements.gestureActions().swipe(ON_BOARDING_CARD_TITLE_3, GestureDirection.LEFT);
+        Elements.gestureActions().swipe(ON_BOARDING_CARD_CAROUSEL, GestureDirection.LEFT);
     }
 
     public static void clickOnBoardingButton() {

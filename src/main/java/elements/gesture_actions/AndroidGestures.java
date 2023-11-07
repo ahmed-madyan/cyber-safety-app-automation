@@ -95,6 +95,23 @@ public class AndroidGestures {
         return this;
     }
 
+    protected AndroidGestures swipe(@NotNull final By elementLocatedStart, @NotNull final By elementLocatedEnd, @NotNull final GestureDirection gestureDirection) {
+        Log4JLogger.logINFO(getClass(), new Object() {
+        }.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocatedStart, "GestureDirection: " + gestureDirection);
+        try {
+            do {
+                ((JavascriptExecutor) Objects.requireNonNull(DriverManager.getDriverInstance())).
+                        executeScript("mobile: swipeGesture", Map.of(
+                                "elementId", ((RemoteWebElement) Objects.requireNonNull(DriverManager.getDriverInstance()).findElement(elementLocatedStart)).getId(),
+                                "direction", gestureDirection.toString().toLowerCase(),
+                                "percent", 1.0
+                        ));
+            } while (Elements.elementState().isDisplayed(elementLocatedStart) && !Elements.elementState().isDisplayed(elementLocatedEnd));
+        } catch (Exception e) {
+//            Exceptions.handle(getClass(), e);
+        }
+        return this;
+    }
     protected AndroidGestures swipe(@NotNull final WebElement element, @NotNull final GestureDirection gestureDirection) {
         Log4JLogger.logINFO(getClass(), new Object() {}.getClass().getEnclosingMethod().getName(), "WebElement: " + element, "GestureDirection: " + gestureDirection);
         try {

@@ -33,4 +33,14 @@ public class GestureActions {
         }
         return this;
     }
+
+    public GestureActions swipe(@NotNull final By elementLocatedStart, @NotNull final By elementLocatedEnd, @NotNull final GestureDirection gestureDirection) {
+        switch (DriverInitializer.getPlatform()) {
+            case "Android" ->
+                    Elements.gestureActions().androidGestures().swipe(elementLocatedStart, elementLocatedEnd, gestureDirection);
+            case "iOS" ->
+                    Elements.gestureActions().iosGestures().swipe(elementLocatedStart, elementLocatedEnd, gestureDirection);
+        }
+        return this;
+    }
 }

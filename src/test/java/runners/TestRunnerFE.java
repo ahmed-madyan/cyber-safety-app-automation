@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
                 publish = true,
                 features = {"src/test/java/features/fe"},
                 glue = {"steps"},
-                tags = ("@OnBoardingScreen"),
+                tags = ("@OnBoardingScreen_TC2"),
                 plugin =
                         {
                                 "pretty",

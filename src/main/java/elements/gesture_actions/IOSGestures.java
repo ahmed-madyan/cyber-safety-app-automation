@@ -7,10 +7,13 @@ import elements.element_actions.ElementActions;
 import elements.element_actions.ElementState;
 import exceptions.Exceptions;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
+import logger.Log4JLogger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import waits.Waits;
+
+import java.util.Objects;
 
 public class IOSGestures {
     public IOSGestures() {
@@ -89,6 +92,22 @@ public class IOSGestures {
         return this;
     }
 
+    protected IOSGestures swipe(@NotNull final By elementLocatedStart, @NotNull final By elementLocatedEnd, @NotNull final GestureDirection gestureDirection) {
+        Log4JLogger.logINFO(getClass(), new Object() {
+        }.getClass().getEnclosingMethod().getName(), "elementLocated: " + elementLocatedStart, "GestureDirection: " + gestureDirection);
+        try {
+            do {
+                DriverManager.executeScript("mobile: swipe", ImmutableMap.of(
+                        "elementId", ((RemoteWebElement) Objects.requireNonNull(DriverManager.getDriverInstance()).findElement(elementLocatedStart)).getId(),
+                        "direction", gestureDirection.toString().toLowerCase(),
+                        "percent", 1.0
+                ));
+            } while (Elements.elementState().isDisplayed(elementLocatedStart) && !Elements.elementState().isDisplayed(elementLocatedEnd));
+        } catch (Exception e) {
+//            Exceptions.handle(getClass(), e);
+        }
+        return this;
+    }
     public IOSGestures swipe(@NotNull final WebElement elementLocated, @NotNull final GestureDirection gestureDirection) {
         try {
             DriverManager.executeScript("mobile: swipe", ImmutableMap.of(
