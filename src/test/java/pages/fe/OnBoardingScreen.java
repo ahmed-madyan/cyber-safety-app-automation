@@ -9,19 +9,19 @@ import readers.json_reader.JSONDataManager;
 
 public class OnBoardingScreen {
     private static final By ON_BOARDING_CARD_TITLE_1 = AppiumBy.name("onBoarding_Card_title_0");
-    private static final By ON_BOARDING_CARD_DESCRIPTION_1 = AppiumBy.accessibilityId("onBoarding_Card_description_0");
-    private static final By ON_BOARDING_CARD_TITLE_2 = AppiumBy.accessibilityId("onBoarding_Card_title_1");
-    private static final By ON_BOARDING_CARD_DESCRIPTION_2 = AppiumBy.accessibilityId("onBoarding_Card_description_1");
-    private static final By ON_BOARDING_CARD_TITLE_3 = AppiumBy.accessibilityId("onBoarding_Card_title_2");
-    private static final By ON_BOARDING_CARD_DESCRIPTION_3 = AppiumBy.accessibilityId("onBoarding_Card_description_2");
-    private static final By ON_BOARDING_CARD_TITLE_4 = AppiumBy.accessibilityId("onBoarding_Card_title_3");
-    private static final By ON_BOARDING_CARD_DESCRIPTION_4 = AppiumBy.accessibilityId("onBoarding_Card_description_3");
-    private static final By ON_BOARDING_BUTTON_COMPONENT_4 = AppiumBy.accessibilityId("onBoarding_Button_Component");
-    private static final By ON_BOARDING_BUTTON_TEXT = AppiumBy.accessibilityId("Button_text");
-    private static final By PAGINATION_DOT_1 = AppiumBy.accessibilityId("Pagination_Dot_0");
-    private static final By PAGINATION_DOT_2 = AppiumBy.accessibilityId("Pagination_Dot_1");
-    private static final By PAGINATION_DOT_3 = AppiumBy.accessibilityId("Pagination_Dot_2");
-    private static final By PAGINATION_DOT_4 = AppiumBy.accessibilityId("Pagination_Dot_3");
+    private static final By ON_BOARDING_CARD_DESCRIPTION_1 = AppiumBy.name("onBoarding_Card_description_0");
+    private static final By ON_BOARDING_CARD_TITLE_2 = AppiumBy.name("onBoarding_Card_title_1");
+    private static final By ON_BOARDING_CARD_DESCRIPTION_2 = AppiumBy.name("onBoarding_Card_description_1");
+    private static final By ON_BOARDING_CARD_TITLE_3 = AppiumBy.name("onBoarding_Card_title_2");
+    private static final By ON_BOARDING_CARD_DESCRIPTION_3 = AppiumBy.name("onBoarding_Card_description_2");
+    private static final By ON_BOARDING_CARD_TITLE_4 = AppiumBy.name("onBoarding_Card_title_3");
+    private static final By ON_BOARDING_CARD_DESCRIPTION_4 = AppiumBy.name("onBoarding_Card_description_3");
+    private static final By ON_BOARDING_BUTTON_COMPONENT_4 = AppiumBy.name("onBoarding_Button_Component");
+    private static final By ON_BOARDING_BUTTON_TEXT = AppiumBy.name("Button_text");
+    private static final By PAGINATION_DOT_1 = AppiumBy.name("Pagination_Dot_0");
+    private static final By PAGINATION_DOT_2 = AppiumBy.name("Pagination_Dot_1");
+    private static final By PAGINATION_DOT_3 = AppiumBy.name("Pagination_Dot_2");
+    private static final By PAGINATION_DOT_4 = AppiumBy.name("Pagination_Dot_3");
     private static final String TEST_DATA_FILE_PATH = ("src/test/resources/test_data/fe/expected/OnBoardingScreens.json");
     public static void swipeOnBoardingCards() {
         swipeOnBoardingCard_1();
