@@ -18,7 +18,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     echo 'API Testing..'
-                    bat 'mvn test -DsuiteXmlFile=testng-api.xml'
+                    sudo 'mvn test -DsuiteXmlFile=testng/testng-api.xml'
                 }
             }
         }
@@ -26,7 +26,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     echo 'Android Testing..'
-                    bat 'mvn test -DsuiteXmlFile=testng-android.xml'
+                    bat 'mvn test -DsuiteXmlFile=testng/testng-android.xml'
                 }
             }
         }
@@ -34,7 +34,7 @@ pipeline {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     echo 'iOS Testing..'
-                    bat 'mvn test -DsuiteXmlFile=testng-ios.xml'
+                    bat 'mvn test -DsuiteXmlFile=testng/testng-ios.xml'
                 }
             }
         }
