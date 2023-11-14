@@ -16,32 +16,40 @@ pipeline {
         }
         stage('API Testing') {
             steps {
-                echo 'API Testing..'
-                bat 'mvn test -DsuiteXmlFile=testng-api.xml'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo 'API Testing..'
+                    bat 'mvn test -DsuiteXmlFile=testng-api.xml'
+                }
             }
         }
         stage('Android Testing') {
             steps {
-                echo 'Android Testing..'
-                bat 'mvn test -DsuiteXmlFile=testng-android.xml'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo 'Android Testing..'
+                    bat 'mvn test -DsuiteXmlFile=testng-android.xml'
+                }
             }
         }
         stage('iOS Testing') {
             steps {
-                echo 'iOS Testing..'
-                bat 'mvn test -DsuiteXmlFile=testng-ios.xml'
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo 'iOS Testing..'
+                    bat 'mvn test -DsuiteXmlFile=testng-ios.xml'
+                }
             }
         }
         stage('Extent Report') {
             steps {
-                echo '$cd'
-                publishHTML(target: [allowMissing         : false,
-                                     alwaysLinkToLastBuild: true,
-                                     keepAll              : true,
-                                     reportDir            : 'SparkReport',
-                                     reportFiles          : 'ExtentReport.html',
-                                     reportName  : 'Extent Reports',
-                                     reportTitles: 'The Report'])
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    echo '$cd'
+                    publishHTML(target: [allowMissing         : false,
+                                         alwaysLinkToLastBuild: true,
+                                         keepAll              : true,
+                                         reportDir            : 'SparkReport',
+                                         reportFiles          : 'ExtentReport.html',
+                                         reportName  : 'Extent Reports',
+                                         reportTitles: 'The Report'])
+                }
             }
         }
 //        stage('Allure Report') {
